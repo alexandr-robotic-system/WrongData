@@ -68,23 +68,38 @@ h1,h2,h3,.brand,.eyebrow,.button,nav a,.tag,footer,.ui-label{font-family:'Space 
 
 @keyframes radar-sweep-rotate{to{transform:rotate(360deg)}}
 
-/* Drone Port on the radar — the sweep passes over it once per rotation, drone lifts off */
-.radar-port{position:absolute;left:50%;top:78%;width:1px;height:1px}
-.radar-pad{position:absolute;left:50%;top:50%;width:78px;height:78px;transform:translate(-50%,-50%)}
-.radar-port-ping{position:absolute;left:50%;top:50%;width:34px;height:34px;border:1.5px solid var(--blue);border-radius:14px;transform:translate(-50%,-50%);opacity:0;animation:radar-port-ping 6s linear infinite}
-.radar-drone-icon{position:absolute;left:50%;top:50%;width:46px;height:46px;transform:translate(-50%,-50%);animation:radar-drone-launch 6s linear infinite;filter:drop-shadow(0 0 6px rgba(245,245,245,.45))}
+/* Drone Port on the radar, seen in profile — the sweep passes over it once per rotation and the group launches: lead first, two followers fanning out behind it */
+.radar-port{position:absolute;left:50%;top:80%;width:1px;height:1px}
+.radar-pad{position:absolute;left:50%;top:50%;width:132px;height:46px;transform:translate(-50%,-50%)}
+.radar-port-ping{position:absolute;left:50%;top:66%;width:70px;height:24px;border:1.5px solid var(--blue);border-radius:50%;transform:translate(-50%,-50%);opacity:0;animation:radar-port-ping 6s linear infinite}
+.radar-drone-icon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);filter:drop-shadow(0 0 5px rgba(245,245,245,.4))}
+.radar-drone-lead{width:42px;height:17px;animation:radar-drone-lead-launch 6s linear infinite;filter:drop-shadow(0 0 6px rgba(120,170,255,.55))}
+.radar-drone-f1{width:32px;height:13px;animation:radar-drone-f1-launch 6s linear infinite}
+.radar-drone-f2{width:32px;height:13px;animation:radar-drone-f2-launch 6s linear infinite}
 
 @keyframes radar-port-ping{
-  0%,47%{opacity:0;width:34px;height:34px}
-  50%{opacity:.9;width:34px;height:34px}
-  68%{opacity:0;width:104px;height:104px}
-  100%{opacity:0;width:34px;height:34px}
+  0%,47%{opacity:0;width:70px;height:24px}
+  50%{opacity:.9;width:70px;height:24px}
+  68%{opacity:0;width:150px;height:56px}
+  100%{opacity:0;width:70px;height:24px}
 }
-@keyframes radar-drone-launch{
-  0%,44%{opacity:1;transform:translate(-50%,-50%) translateY(0) scale(1)}
-  50%{opacity:1;transform:translate(-50%,-50%) translateY(0) scale(1.18)}
-  78%{opacity:0;transform:translate(-50%,-50%) translateY(-150px) scale(.5)}
-  100%{opacity:0;transform:translate(-50%,-50%) translateY(0) scale(1)}
+@keyframes radar-drone-lead-launch{
+  0%,44%{opacity:1;transform:translate(-50%,-50%) translate(0,0) scale(1)}
+  50%{opacity:1;transform:translate(-50%,-50%) translate(0,-4px) scale(1.1)}
+  80%{opacity:0;transform:translate(-50%,-50%) translate(0,-155px) scale(.5)}
+  100%{opacity:0;transform:translate(-50%,-50%) translate(0,0) scale(1)}
+}
+@keyframes radar-drone-f1-launch{
+  0%,44%{opacity:1;transform:translate(-50%,-50%) translate(-38px,3px) scale(1)}
+  52%{opacity:1;transform:translate(-50%,-50%) translate(-46px,0) scale(1.05)}
+  82%{opacity:0;transform:translate(-50%,-50%) translate(-92px,-135px) scale(.5)}
+  100%{opacity:0;transform:translate(-50%,-50%) translate(-38px,3px) scale(1)}
+}
+@keyframes radar-drone-f2-launch{
+  0%,44%{opacity:1;transform:translate(-50%,-50%) translate(38px,3px) scale(1)}
+  52%{opacity:1;transform:translate(-50%,-50%) translate(46px,0) scale(1.05)}
+  82%{opacity:0;transform:translate(-50%,-50%) translate(92px,-135px) scale(.5)}
+  100%{opacity:0;transform:translate(-50%,-50%) translate(38px,3px) scale(1)}
 }
 @media(max-width:900px){.radar{transform:scale(.65);right:-70px;top:-30px}}
 @media(max-width:680px){.radar{display:none}}
@@ -267,6 +282,8 @@ p{font-family:Inter,Arial,sans-serif}
   html{scroll-behavior:auto}
   .reveal,.stagger>*{opacity:1!important;transform:none!important;transition:none!important}
   .status-badge .dot,.radar span,.radar::before,.radar-sweep,.radar-port-ping,.radar-drone-icon{animation:none!important}
-  .radar-drone-icon{opacity:1!important;transform:translate(-50%,-50%)!important}
+  .radar-drone-lead{opacity:1!important;transform:translate(-50%,-50%) translate(0,0)!important}
+  .radar-drone-f1{opacity:1!important;transform:translate(-50%,-50%) translate(-38px,3px)!important}
+  .radar-drone-f2{opacity:1!important;transform:translate(-50%,-50%) translate(38px,3px)!important}
   .cards article,.solutions-grid article,.role-grid article,.button,.button span,.scenario li,.outcomes-grid li{transition:none!important}
 }
