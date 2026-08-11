@@ -53,34 +53,42 @@
           <span></span><span></span><span></span>
           <div class="radar-sweep"></div>
           <div class="radar-port">
-            <svg class="radar-pad" viewBox="0 0 140 46" aria-hidden="true">
-              <polygon points="8,36 132,36 118,18 22,18" fill="rgba(11,13,18,.7)" stroke="var(--silver)" stroke-width="3"/>
-              <line x1="22" y1="18" x2="34" y2="18" stroke="var(--blue)" stroke-width="3"/>
-              <line x1="118" y1="18" x2="106" y2="18" stroke="var(--blue)" stroke-width="3"/>
-              <line x1="8" y1="36" x2="132" y2="36" stroke="var(--card-line)" stroke-width="2"/>
-            </svg>
+            <div class="port-case" aria-hidden="true">
+              <div class="port-body"></div>
+              <div class="port-lid-hinge port-lid-hinge-l"><span class="port-lid"></span></div>
+              <div class="port-lid-hinge port-lid-hinge-r"><span class="port-lid"></span></div>
+            </div>
             <span class="radar-port-ping" aria-hidden="true"></span>
             <!-- Lead drone (centre) -->
-            <svg class="radar-drone-icon radar-drone-lead" viewBox="0 0 100 40" aria-hidden="true">
-              <line x1="8" y1="14" x2="92" y2="14" stroke="var(--blue)" stroke-width="5"/>
-              <circle cx="8" cy="14" r="8" fill="none" stroke="var(--blue)" stroke-width="3"/>
-              <circle cx="92" cy="14" r="8" fill="none" stroke="var(--blue)" stroke-width="3"/>
-              <rect x="30" y="17" width="40" height="17" rx="6" fill="var(--blue-deep)" stroke="var(--blue)" stroke-width="2"/>
-            </svg>
+            <div class="radar-drone-icon radar-drone-lead">
+              <svg class="drone-body" viewBox="0 0 100 40" aria-hidden="true">
+                <line x1="8" y1="14" x2="92" y2="14" stroke="var(--blue)" stroke-width="5"/>
+                <circle class="drone-rotor" cx="8" cy="14" r="8" fill="none" stroke="var(--blue)" stroke-width="3"/>
+                <circle class="drone-rotor" cx="92" cy="14" r="8" fill="none" stroke="var(--blue)" stroke-width="3"/>
+                <rect x="30" y="17" width="40" height="17" rx="6" fill="var(--blue-deep)" stroke="var(--blue)" stroke-width="2"/>
+              </svg>
+              <span class="drone-glow" aria-hidden="true"></span>
+            </div>
             <!-- Follower drone (left) -->
-            <svg class="radar-drone-icon radar-drone-f1" viewBox="0 0 100 40" aria-hidden="true">
-              <line x1="10" y1="16" x2="90" y2="16" stroke="var(--white)" stroke-width="4"/>
-              <circle cx="10" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
-              <circle cx="90" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
-              <rect x="33" y="19" width="34" height="14" rx="5" fill="var(--ink)" stroke="var(--white)" stroke-width="2"/>
-            </svg>
+            <div class="radar-drone-icon radar-drone-f1">
+              <svg class="drone-body" viewBox="0 0 100 40" aria-hidden="true">
+                <line x1="10" y1="16" x2="90" y2="16" stroke="var(--white)" stroke-width="4"/>
+                <circle class="drone-rotor" cx="10" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
+                <circle class="drone-rotor" cx="90" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
+                <rect x="33" y="19" width="34" height="14" rx="5" fill="var(--ink)" stroke="var(--white)" stroke-width="2"/>
+              </svg>
+              <span class="drone-glow" aria-hidden="true"></span>
+            </div>
             <!-- Follower drone (right) -->
-            <svg class="radar-drone-icon radar-drone-f2" viewBox="0 0 100 40" aria-hidden="true">
-              <line x1="10" y1="16" x2="90" y2="16" stroke="var(--white)" stroke-width="4"/>
-              <circle cx="10" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
-              <circle cx="90" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
-              <rect x="33" y="19" width="34" height="14" rx="5" fill="var(--ink)" stroke="var(--white)" stroke-width="2"/>
-            </svg>
+            <div class="radar-drone-icon radar-drone-f2">
+              <svg class="drone-body" viewBox="0 0 100 40" aria-hidden="true">
+                <line x1="10" y1="16" x2="90" y2="16" stroke="var(--white)" stroke-width="4"/>
+                <circle class="drone-rotor" cx="10" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
+                <circle class="drone-rotor" cx="90" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
+                <rect x="33" y="19" width="34" height="14" rx="5" fill="var(--ink)" stroke="var(--white)" stroke-width="2"/>
+              </svg>
+              <span class="drone-glow" aria-hidden="true"></span>
+            </div>
           </div>
         </div>
         <div class="hero-top">

@@ -68,14 +68,39 @@ h1,h2,h3,.brand,.eyebrow,.button,nav a,.tag,footer,.ui-label{font-family:'Space 
 
 @keyframes radar-sweep-rotate{to{transform:rotate(360deg)}}
 
-/* Drone Port on the radar, seen in profile — the sweep passes over it once per rotation and the group launches: lead first, two followers fanning out behind it */
+/* Drone Port on the radar, seen in profile — the case sits closed, opens like a hatch, launches lead + 2 followers once the sweep detects it, then closes again */
 .radar-port{position:absolute;left:50%;top:80%;width:1px;height:1px}
-.radar-pad{position:absolute;left:50%;top:50%;width:132px;height:46px;transform:translate(-50%,-50%)}
-.radar-port-ping{position:absolute;left:50%;top:66%;width:70px;height:24px;border:1.5px solid var(--blue);border-radius:50%;transform:translate(-50%,-50%);opacity:0;animation:radar-port-ping 6s linear infinite}
+.port-body{position:absolute;left:50%;top:50%;width:118px;height:24px;transform:translate(-50%,-50%);border-radius:4px 4px 8px 8px;background:rgba(11,13,18,.85);border:2px solid var(--silver);box-shadow:0 10px 22px rgba(0,0,0,.4)}
+.port-lid-hinge{position:absolute;left:50%;top:50%;width:0;height:0}
+.port-lid-hinge-l{transform:translate(-50%,-50%) translate(-58px,-12px)}
+.port-lid-hinge-r{transform:translate(-50%,-50%) translate(58px,-12px)}
+.port-lid{position:absolute;display:block;width:58px;height:6px;border-radius:3px;background:var(--ink);border:1.5px solid var(--blue)}
+.port-lid-hinge-l .port-lid{left:0;top:-6px;transform-origin:0% 100%;animation:port-lid-l-open 6s linear infinite}
+.port-lid-hinge-r .port-lid{right:0;top:-6px;transform-origin:100% 100%;animation:port-lid-r-open 6s linear infinite}
+.radar-port-ping{position:absolute;left:50%;top:50%;width:70px;height:24px;border:1.5px solid var(--blue);border-radius:50%;transform:translate(-50%,-50%);opacity:0;animation:radar-port-ping 6s linear infinite}
 .radar-drone-icon{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);filter:drop-shadow(0 0 5px rgba(245,245,245,.4))}
 .radar-drone-lead{width:42px;height:17px;animation:radar-drone-lead-launch 6s linear infinite;filter:drop-shadow(0 0 6px rgba(120,170,255,.55))}
 .radar-drone-f1{width:32px;height:13px;animation:radar-drone-f1-launch 6s linear infinite}
 .radar-drone-f2{width:32px;height:13px;animation:radar-drone-f2-launch 6s linear infinite}
+.drone-body{width:100%;height:100%;display:block;animation:drone-hover-bob 1.6s ease-in-out infinite}
+.radar-drone-f1 .drone-body{animation-delay:.3s}
+.radar-drone-f2 .drone-body{animation-delay:.55s}
+.drone-rotor{animation:drone-rotor-blur .35s linear infinite}
+.drone-glow{position:absolute;left:50%;bottom:-5px;width:55%;height:6px;opacity:.5;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(120,170,255,.85),rgba(120,170,255,0));filter:blur(2px);border-radius:50%;animation:drone-thrust-pulse .8s ease-in-out infinite}
+
+@keyframes port-lid-l-open{
+  0%,26%{transform:rotate(0deg)}
+  40%,84%{transform:rotate(-108deg)}
+  96%,100%{transform:rotate(0deg)}
+}
+@keyframes port-lid-r-open{
+  0%,26%{transform:rotate(0deg)}
+  40%,84%{transform:rotate(108deg)}
+  96%,100%{transform:rotate(0deg)}
+}
+@keyframes drone-hover-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+@keyframes drone-rotor-blur{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes drone-thrust-pulse{0%,100%{opacity:.3;transform:translateX(-50%) scaleX(.75)}50%{opacity:.7;transform:translateX(-50%) scaleX(1.15)}}
 
 @keyframes radar-port-ping{
   0%,47%{opacity:0;width:70px;height:24px}
@@ -84,22 +109,25 @@ h1,h2,h3,.brand,.eyebrow,.button,nav a,.tag,footer,.ui-label{font-family:'Space 
   100%{opacity:0;width:70px;height:24px}
 }
 @keyframes radar-drone-lead-launch{
-  0%,44%{opacity:1;transform:translate(-50%,-50%) translate(0,0) scale(1)}
-  50%{opacity:1;transform:translate(-50%,-50%) translate(0,-4px) scale(1.1)}
-  80%{opacity:0;transform:translate(-50%,-50%) translate(0,-155px) scale(.5)}
-  100%{opacity:0;transform:translate(-50%,-50%) translate(0,0) scale(1)}
+  0%,32%{opacity:0;transform:translate(-50%,-50%) translate(0,6px) scale(.85)}
+  38%{opacity:1;transform:translate(-50%,-50%) translate(0,2px) scale(.9)}
+  50%{opacity:1;transform:translate(-50%,-50%) translate(0,-6px) scale(1.1)}
+  78%{opacity:0;transform:translate(-50%,-50%) translate(0,-155px) scale(.45)}
+  100%{opacity:0;transform:translate(-50%,-50%) translate(0,6px) scale(.85)}
 }
 @keyframes radar-drone-f1-launch{
-  0%,44%{opacity:1;transform:translate(-50%,-50%) translate(-38px,3px) scale(1)}
+  0%,32%{opacity:0;transform:translate(-50%,-50%) translate(-30px,8px) scale(.85)}
+  40%{opacity:1;transform:translate(-50%,-50%) translate(-38px,4px) scale(.9)}
   52%{opacity:1;transform:translate(-50%,-50%) translate(-46px,0) scale(1.05)}
-  82%{opacity:0;transform:translate(-50%,-50%) translate(-92px,-135px) scale(.5)}
-  100%{opacity:0;transform:translate(-50%,-50%) translate(-38px,3px) scale(1)}
+  80%{opacity:0;transform:translate(-50%,-50%) translate(-92px,-135px) scale(.45)}
+  100%{opacity:0;transform:translate(-50%,-50%) translate(-30px,8px) scale(.85)}
 }
 @keyframes radar-drone-f2-launch{
-  0%,44%{opacity:1;transform:translate(-50%,-50%) translate(38px,3px) scale(1)}
+  0%,32%{opacity:0;transform:translate(-50%,-50%) translate(30px,8px) scale(.85)}
+  40%{opacity:1;transform:translate(-50%,-50%) translate(38px,4px) scale(.9)}
   52%{opacity:1;transform:translate(-50%,-50%) translate(46px,0) scale(1.05)}
-  82%{opacity:0;transform:translate(-50%,-50%) translate(92px,-135px) scale(.5)}
-  100%{opacity:0;transform:translate(-50%,-50%) translate(38px,3px) scale(1)}
+  80%{opacity:0;transform:translate(-50%,-50%) translate(92px,-135px) scale(.45)}
+  100%{opacity:0;transform:translate(-50%,-50%) translate(30px,8px) scale(.85)}
 }
 @media(max-width:900px){.radar{transform:scale(.65);right:-70px;top:-30px}}
 @media(max-width:680px){.radar{display:none}}
@@ -281,9 +309,11 @@ p{font-family:Inter,Arial,sans-serif}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal,.stagger>*{opacity:1!important;transform:none!important;transition:none!important}
-  .status-badge .dot,.radar span,.radar::before,.radar-sweep,.radar-port-ping,.radar-drone-icon{animation:none!important}
-  .radar-drone-lead{opacity:1!important;transform:translate(-50%,-50%) translate(0,0)!important}
-  .radar-drone-f1{opacity:1!important;transform:translate(-50%,-50%) translate(-38px,3px)!important}
-  .radar-drone-f2{opacity:1!important;transform:translate(-50%,-50%) translate(38px,3px)!important}
+  .status-badge .dot,.radar span,.radar::before,.radar-sweep,.radar-port-ping,.radar-drone-icon,.port-lid,.drone-body,.drone-rotor,.drone-glow{animation:none!important}
+  .port-lid-hinge-l .port-lid{transform:rotate(-108deg)!important}
+  .port-lid-hinge-r .port-lid{transform:rotate(108deg)!important}
+  .radar-drone-lead{opacity:1!important;transform:translate(-50%,-50%) translate(0,-6px)!important}
+  .radar-drone-f1{opacity:1!important;transform:translate(-50%,-50%) translate(-46px,0)!important}
+  .radar-drone-f2{opacity:1!important;transform:translate(-50%,-50%) translate(46px,0)!important}
   .cards article,.solutions-grid article,.role-grid article,.button,.button span,.scenario li,.outcomes-grid li{transition:none!important}
 }
