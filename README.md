@@ -17,5 +17,5 @@ In GitHub **Settings → Pages → Custom domain**, enter `wrongdata.md`. GitHub
 
 ## Before publishing
 
-- Replace `hello@wrongdata.md` in `index.html` once the mailbox is ready.
+- Contact email in `index.html` is `alexandr@wrongdata.md`; update it if this changes.
 - Replace the LinkedIn URL if the final page uses another URL.

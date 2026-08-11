@@ -70,12 +70,18 @@ h1,h2,h3,.brand,.eyebrow,.button,nav a,.tag,footer,.ui-label{font-family:'Space 
 .stats span{font-size:13px;font-family:Inter,sans-serif;color:#c5c6ca}
 
 /* Sections */
-.section{padding:104px 0}
+.section{position:relative;padding:104px 0;overflow:hidden;background-image:linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 100%}
+.section>*:not(.ghost-num){position:relative;z-index:1}
 .section h2{font-size:clamp(32px,4.4vw,44px);max-width:780px;margin-top:16px}
 h3{font-size:20px;font-weight:600;margin:0 0 10px}
 p{font-family:Inter,Arial,sans-serif}
 .muted{font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 10px}
 .tag{font:600 11px 'Space Grotesk';letter-spacing:.1em;color:var(--blue);margin:0 0 14px}
+
+/* Ghost section numerals */
+.ghost-num{position:absolute;top:-26px;right:max(16px,calc((100% - 1160px)/2 + 4px));font:700 240px/1 'Space Grotesk',sans-serif;color:rgba(255,255,255,.035);z-index:0;pointer-events:none;user-select:none;letter-spacing:-.04em}
+@media(max-width:900px){.ghost-num{font-size:160px;top:-10px}}
+@media(max-width:680px){.ghost-num{display:none}}
 
 /* Card grids (generic) */
 .cards{display:grid;gap:16px;margin-top:48px}
@@ -84,25 +90,32 @@ p{font-family:Inter,Arial,sans-serif}
 .cards span{font:600 11px 'Space Grotesk';color:var(--blue)}
 .cards h3{margin-top:34px}
 .cards p{font-size:14px;line-height:1.6;color:var(--muted)}
-.tech-grid{grid-template-columns:repeat(4,1fr)}
-.tech-grid article:last-child{grid-column:span 2}
-.port-grid{grid-template-columns:repeat(4,1fr);margin-top:40px}
-.port-grid article h3{margin-top:0;font-size:16px}
-.port-grid article p{margin:0}
+/* Technology — dense spec list instead of boxed cards */
+.tech-grid{grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--line)}
+.tech-grid article{padding:24px 30px 24px 0;background:none;border:0;border-bottom:1px solid var(--line);transform:none}
+.tech-grid article:nth-child(odd){padding-right:30px;border-right:1px solid var(--line)}
+.tech-grid article:nth-child(even){padding-left:30px}
+.tech-grid article:last-child{grid-column:1/-1;border-right:0}
+.tech-grid article:hover{border-color:var(--line);background:none;transform:none}
+.tech-grid article:hover h3{color:var(--blue)}
+.tech-grid h3{transition:color .2s ease}
+.tech-grid span{display:inline-block;min-width:26px}
 
 /* Projects-style shaded sections (Solutions / Fleet / Outcomes) */
 .projects{background:#0a0b0f}
 
-/* Solutions */
-.solutions-grid{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.solutions-grid article{padding:28px;border:1px solid var(--card-line);background:linear-gradient(135deg,#101b32,#06070a 65%);transition:border-color .2s ease,transform .2s ease}
-.solutions-grid article:nth-child(2n){background:linear-gradient(135deg,#171717,#06070a 65%)}
-.solutions-grid article:hover{border-color:var(--blue);transform:translateY(-4px)}
+/* Solutions — split rows instead of boxed grid */
+.solutions-grid{margin-top:32px;display:flex;flex-direction:column}
+.solutions-grid article{display:grid;grid-template-columns:250px 1fr;gap:32px;padding:30px 0;border-top:1px solid var(--line);transition:background .25s ease}
+.solutions-grid article:last-child{border-bottom:1px solid var(--line)}
+.solutions-grid article:hover{background:linear-gradient(90deg,rgba(51,120,244,.06),transparent 60%)}
+.solutions-grid h3{margin-top:0}
+.solutions-grid .tag{font-variant-numeric:tabular-nums}
 
-/* Fleet / roles */
-.role-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.role-grid article{padding:22px;background:var(--ink);border:1px solid var(--card-line);transition:border-color .2s ease,transform .2s ease}
-.role-grid article:hover{border-color:var(--blue);transform:translateY(-4px)}
+/* Fleet — diagram + caption list */
+.fleet-diagram{display:block;width:min(420px,100%);height:auto;margin:44px 0 8px;overflow:visible}
+.role-grid{margin-top:28px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px 24px}
+.role-grid article{padding:18px 0 0;border-top:1px solid var(--line)}
 .role-grid span{display:block;font:600 11px 'Space Grotesk';letter-spacing:.08em;color:var(--blue);margin-bottom:10px}
 .role-grid p{font-size:14px;line-height:1.6;color:var(--muted);margin:0}
 
@@ -112,6 +125,13 @@ p{font-family:Inter,Arial,sans-serif}
 .scenario li:hover{padding-left:50px;color:var(--white)}
 .scenario li:last-child{border-bottom:1px solid var(--line)}
 .scenario li::before{content:counter(step);position:absolute;left:0;top:14px;font:600 12px 'Space Grotesk';color:var(--blue)}
+
+/* Drone Port — cycle diagram + tag strip */
+.cycle-diagram{display:block;width:100%;max-width:640px;height:auto;margin:40px 0 44px}
+.port-tags{display:flex;flex-wrap:wrap;gap:10px;padding:0;list-style:none}
+.port-tags li{border:1px solid var(--card-line);border-radius:999px;padding:10px 18px;font-size:13px;line-height:1.5;color:var(--muted);transition:border-color .2s ease,color .2s ease}
+.port-tags li:hover{border-color:var(--blue);color:#d7d8da}
+.port-tags b{color:var(--white);font-weight:600;margin-right:6px}
 
 /* Outcomes */
 .outcomes-grid{margin-top:48px;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
@@ -128,12 +148,23 @@ p{font-family:Inter,Arial,sans-serif}
 .compare-row.compare-head span{font:600 11px 'Space Grotesk';letter-spacing:.08em;color:var(--blue);padding-top:14px;padding-bottom:14px}
 
 .company .lead{max-width:760px}
-.text-link{font-size:14px;font-weight:700;color:var(--white)}
+.text-link{font-size:14px;font-weight:700;color:var(--white);font-family:Inter,Arial,sans-serif}
 
-footer{border-top:1px solid var(--line);padding:27px 0 38px;display:flex;justify-content:space-between;font:600 10px 'Space Grotesk';letter-spacing:.06em;color:#8c8f96}
+/* Footer */
+.site-footer{border-top:1px solid var(--line);margin-top:40px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;padding:56px 0 40px}
+.footer-brand p{margin:12px 0 0;font-size:13px;line-height:1.6}
+.footer-nav{display:flex;flex-direction:column;gap:10px}
+.footer-nav a{font-size:13px;color:#d7d8da;text-decoration:none;transition:color .15s ease}
+.footer-nav a:hover{color:var(--blue)}
+.footer-contact{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
+.footer-bottom{border-top:1px solid var(--line);padding:22px 0 34px;display:flex;justify-content:space-between;font:600 10px 'Space Grotesk';letter-spacing:.06em;color:#8c8f96}
 
 @media(max-width:900px){
-  .tech-grid,.port-grid{grid-template-columns:repeat(2,1fr)}
+  .tech-grid{grid-template-columns:repeat(2,1fr)}
+  .solutions-grid article{grid-template-columns:200px 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:28px 24px}
+  .footer-brand{grid-column:1/-1}
 }
 
 @media(max-width:680px){
@@ -143,15 +174,17 @@ footer{border-top:1px solid var(--line);padding:27px 0 38px;display:flex;justify
   .menu-toggle:checked~nav{display:flex}
   .hero{min-height:0;padding-top:48px;padding-bottom:64px}
   .logo{margin-top:24px}
-  .stats,.solutions-grid,.role-grid,.outcomes-grid,.tech-grid,.port-grid{grid-template-columns:1fr}
+  .stats,.role-grid,.outcomes-grid,.tech-grid{grid-template-columns:1fr}
+  .solutions-grid article{grid-template-columns:1fr;gap:10px}
   .stats div{border-right:1px solid var(--line)}
   .section{padding:72px 0}
   .cards{margin-top:32px}
   .scenario li{padding-left:36px}
+  .footer-grid{grid-template-columns:1fr;gap:24px;padding:44px 0 32px}
+  .footer-bottom{flex-direction:column;gap:12px;align-items:flex-start}
   .compare-row{grid-template-columns:1fr}
   .compare-row span:first-child{border-right:0;border-bottom:1px solid var(--card-line)}
   .lead{font-size:16px}
-  footer{gap:16px;flex-direction:column}
 }
 
 /* Scroll-reveal */
