@@ -1,1 +1,126 @@
-:root{--black:#000;--ink:#0b0d12;--blue:#3378f4;--blue-btn:#2d6cdb;--silver:#d9d9db;--muted:#a4a7ad}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--black);color:#f5f5f7;font-family:Manrope,Arial,sans-serif}.wrap{width:min(1160px,calc(100% - 48px));margin:auto}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #1c1f27;position:relative;z-index:2}.brand{font-size:12px;font-weight:800;letter-spacing:.16em;text-decoration:none;color:white}.brand span{color:var(--blue);font-size:19px;margin-right:8px}.nav nav{display:flex;gap:30px}.nav nav a,.text-link{font-size:12px;color:#d7d8da;text-decoration:none}.nav nav a:hover,.text-link:hover{color:var(--blue)}.menu-toggle{position:absolute;width:1px;height:1px;opacity:0}.menu{display:none;background:none;color:white;border:0;font:inherit;cursor:pointer}.hero{min-height:650px;padding:72px 0 92px;background:radial-gradient(circle at 78% 20%,#0d245c55,transparent 28%)}.eyebrow{font:500 11px 'DM Mono',monospace;letter-spacing:.14em;color:var(--blue)}.logo{display:block;width:min(590px,100%);height:auto;aspect-ratio:1600/750;margin:33px 0 -8px}.hero h1,.section h2{margin:0;letter-spacing:-.052em;font-size:clamp(46px,6.5vw,86px);max-width:900px;line-height:.98}.hero h1 em{font-style:normal;color:var(--blue)}.lead{font-size:18px;line-height:1.65;color:#c5c6ca;max-width:650px;margin:30px 0}.button{display:inline-flex;gap:24px;align-items:center;padding:15px 18px;background:var(--blue-btn);color:white;text-decoration:none;font-size:13px;font-weight:700}.button span{font-size:20px}.statbar{border-block:1px solid #1c1f27}.stats{display:grid;grid-template-columns:repeat(3,1fr)}.stats div{padding:25px 20px;border-left:1px solid #1c1f27;display:flex;gap:16px;align-items:center}.stats div:last-child{border-right:1px solid #1c1f27}.stats b{font:500 12px 'DM Mono';color:var(--blue)}.stats span{font-size:13px}.section{padding:132px 0}.section h2{font-size:clamp(38px,5vw,64px);max-width:780px;margin-top:18px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:62px}.cards article{min-height:270px;padding:28px;background:var(--ink);border:1px solid #20232b}.cards span,.project-grid article p{font:500 11px 'DM Mono';color:var(--blue)}h3{font-size:22px;margin:60px 0 13px}.cards p{font-size:14px;line-height:1.6;color:var(--muted)}.projects{background:#0a0b0f}.project-grid{margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:16px}.project-grid article{min-height:315px;padding:28px;border:1px solid #242833;background:linear-gradient(135deg,#101b32,#06070a 65%)}.project-grid article:nth-child(2){background:linear-gradient(135deg,#171717,#06070a 65%)}.project-grid h3{font-size:30px;margin:130px 0 10px}.project-grid span{color:#b8bac0;font-size:13px}.company .lead{max-width:760px}.text-link{font-size:14px;font-weight:700;color:white}footer{border-top:1px solid #1c1f27;padding:27px 0 38px;display:flex;justify-content:space-between;font:500 10px 'DM Mono';letter-spacing:.08em;color:#8c8f96}@media(max-width:680px){.wrap{width:min(100% - 32px,1160px)}.menu{display:block}.nav nav{display:none;position:absolute;right:0;top:75px;flex-direction:column;background:#08090d;border:1px solid #222;padding:18px}.menu-toggle:checked~nav{display:flex}.menu-toggle:focus-visible~.menu{outline:2px solid var(--blue);outline-offset:2px}.hero{min-height:570px;padding-top:55px}.logo{margin-top:24px}.stats,.cards,.project-grid{grid-template-columns:1fr}.stats div{border-right:1px solid #1c1f27}.section{padding:80px 0}.cards{margin-top:35px}.cards article{min-height:220px}.cards h3{margin-top:40px}.project-grid{margin-top:35px}.project-grid article{min-height:260px}.project-grid h3{margin-top:88px}footer{gap:16px;flex-direction:column}.lead{font-size:16px}}
+/* WRONG DATA — design tokens per Brand Book v1.0 */
+:root{
+  --black:#000000;        /* Void Black — primary background */
+  --ink:#0B0D12;           /* System Graphite — surfaces/cards */
+  --blue:#3378F4;          /* Electric Blue — primary accent */
+  --blue-deep:#0038CC;     /* Signal Blue — deep accent / hover */
+  --silver:#D9D9DB;        /* Machined Silver — metallic/secondary */
+  --white:#F5F5F5;         /* Data White — type/highlights */
+  --muted:#a4a7ad;
+  --line:#1c1f27;
+  --card-line:#20232b;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--black);color:var(--white);font-family:Inter,Arial,Helvetica,sans-serif}
+h1,h2,h3,.brand,.eyebrow,.button,nav a,.tag,footer,.ui-label{font-family:'Space Grotesk',Arial,Helvetica,sans-serif}
+.wrap{width:min(1160px,calc(100% - 48px));margin:auto}
+
+/* Nav */
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:relative;z-index:2}
+.brand{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-decoration:none;color:var(--white)}
+.brand-mark{display:block;border-radius:4px}
+.nav nav{display:flex;gap:26px}
+.nav nav a,.text-link{font-size:12px;color:#d7d8da;text-decoration:none}
+.nav nav a:hover,.text-link:hover{color:var(--blue)}
+.menu-toggle{position:absolute;width:1px;height:1px;opacity:0}
+.menu{display:none;background:none;color:var(--white);border:0;font:inherit;cursor:pointer}
+.menu-toggle:focus-visible~.menu{outline:2px solid var(--blue);outline-offset:2px}
+
+/* Hero */
+.hero{min-height:640px;padding:72px 0 92px;background:radial-gradient(circle at 78% 20%,#0d245c55,transparent 28%)}
+.eyebrow{font:600 11px 'Space Grotesk',monospace;letter-spacing:.14em;color:var(--blue)}
+.logo{display:block;width:min(590px,100%);min-width:220px;height:auto;aspect-ratio:1600/750;margin:33px 0 -8px}
+.hero h1,.section h2{margin:0;letter-spacing:-.03em;font-weight:600;font-size:clamp(40px,6vw,56px);max-width:900px;line-height:1.08}
+.lead{font-size:18px;line-height:1.55;color:#c5c6ca;max-width:680px;margin:26px 0;font-family:Inter,Arial,sans-serif}
+.button{display:inline-flex;gap:24px;align-items:center;padding:15px 18px;background:var(--blue-deep);color:var(--white);text-decoration:none;font-size:13px;font-weight:700}
+.button:hover{background:var(--blue)}
+.button span{font-size:20px}
+
+/* Stat bar */
+.statbar{border-block:1px solid var(--line)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr)}
+.stats div{padding:25px 20px;border-left:1px solid var(--line);display:flex;gap:16px;align-items:center}
+.stats div:last-child{border-right:1px solid var(--line)}
+.stats b{font:600 20px 'Space Grotesk';color:var(--blue)}
+.stats span{font-size:13px;font-family:Inter,sans-serif;color:#c5c6ca}
+
+/* Sections */
+.section{padding:104px 0}
+.section h2{font-size:clamp(32px,4.4vw,44px);max-width:780px;margin-top:16px}
+h3{font-size:20px;font-weight:600;margin:0 0 10px}
+p{font-family:Inter,Arial,sans-serif}
+.muted{font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 10px}
+.tag{font:600 11px 'Space Grotesk';letter-spacing:.1em;color:var(--blue);margin:0 0 14px}
+
+/* Card grids (generic) */
+.cards{display:grid;gap:16px;margin-top:48px}
+.cards article{padding:26px;background:var(--ink);border:1px solid var(--card-line)}
+.cards span{font:600 11px 'Space Grotesk';color:var(--blue)}
+.cards h3{margin-top:34px}
+.cards p{font-size:14px;line-height:1.6;color:var(--muted)}
+.tech-grid{grid-template-columns:repeat(4,1fr)}
+.tech-grid article:last-child{grid-column:span 2}
+.port-grid{grid-template-columns:repeat(4,1fr);margin-top:40px}
+.port-grid article h3{margin-top:0;font-size:16px}
+.port-grid article p{margin:0}
+
+/* Projects-style shaded sections (Solutions / Fleet / Outcomes) */
+.projects{background:#0a0b0f}
+
+/* Solutions */
+.solutions-grid{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.solutions-grid article{padding:28px;border:1px solid var(--card-line);background:linear-gradient(135deg,#101b32,#06070a 65%)}
+.solutions-grid article:nth-child(2n){background:linear-gradient(135deg,#171717,#06070a 65%)}
+
+/* Fleet / roles */
+.role-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.role-grid article{padding:22px;background:var(--ink);border:1px solid var(--card-line)}
+.role-grid span{display:block;font:600 11px 'Space Grotesk';letter-spacing:.08em;color:var(--blue);margin-bottom:10px}
+.role-grid p{font-size:14px;line-height:1.6;color:var(--muted);margin:0}
+
+.scenario-label{margin-top:56px}
+.scenario{margin:16px 0 0;padding:0;list-style:none;counter-reset:step;max-width:760px}
+.scenario li{counter-increment:step;position:relative;padding:14px 0 14px 44px;border-top:1px solid var(--line);font-size:15px;line-height:1.55;color:#d7d8da}
+.scenario li:last-child{border-bottom:1px solid var(--line)}
+.scenario li::before{content:counter(step);position:absolute;left:0;top:14px;font:600 12px 'Space Grotesk';color:var(--blue)}
+
+/* Outcomes */
+.outcomes-grid{margin-top:48px;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.outcomes-grid li{background:var(--ink);padding:20px 22px;font-size:15px;color:var(--white)}
+
+/* Comparison table */
+.compare-table{margin-top:44px;border:1px solid var(--card-line)}
+.compare-row{display:grid;grid-template-columns:1fr 1fr}
+.compare-row span{padding:16px 22px;font-size:14px;line-height:1.5}
+.compare-row span:first-child{color:var(--muted);border-right:1px solid var(--card-line)}
+.compare-row span:last-child{color:var(--white)}
+.compare-row+.compare-row{border-top:1px solid var(--card-line)}
+.compare-row.compare-head span{font:600 11px 'Space Grotesk';letter-spacing:.08em;color:var(--blue);padding-top:14px;padding-bottom:14px}
+
+.company .lead{max-width:760px}
+.text-link{font-size:14px;font-weight:700;color:var(--white)}
+
+footer{border-top:1px solid var(--line);padding:27px 0 38px;display:flex;justify-content:space-between;font:600 10px 'Space Grotesk';letter-spacing:.06em;color:#8c8f96}
+
+@media(max-width:900px){
+  .tech-grid,.port-grid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:680px){
+  .wrap{width:min(100% - 32px,1160px)}
+  .menu{display:block}
+  .nav nav{display:none;position:absolute;right:0;top:75px;flex-direction:column;background:#08090d;border:1px solid #222;padding:18px;gap:16px}
+  .menu-toggle:checked~nav{display:flex}
+  .hero{min-height:0;padding-top:48px;padding-bottom:64px}
+  .logo{margin-top:24px}
+  .stats,.solutions-grid,.role-grid,.outcomes-grid,.tech-grid,.port-grid{grid-template-columns:1fr}
+  .stats div{border-right:1px solid var(--line)}
+  .section{padding:72px 0}
+  .cards{margin-top:32px}
+  .scenario li{padding-left:36px}
+  .compare-row{grid-template-columns:1fr}
+  .compare-row span:first-child{border-right:0;border-bottom:1px solid var(--card-line)}
+  .lead{font-size:16px}
+  footer{gap:16px;flex-direction:column}
+}
