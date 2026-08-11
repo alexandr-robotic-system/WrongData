@@ -21,21 +21,42 @@ h1,h2,h3,.brand,.eyebrow,.button,nav a,.tag,footer,.ui-label{font-family:'Space 
 .brand{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-decoration:none;color:var(--white)}
 .brand-mark{display:block;border-radius:4px}
 .nav nav{display:flex;gap:26px}
-.nav nav a,.text-link{font-size:12px;color:#d7d8da;text-decoration:none}
-.nav nav a:hover,.text-link:hover{color:var(--blue)}
+.nav nav a,.text-link{font-size:12px;color:#d7d8da;text-decoration:none;transition:color .15s ease}
+.nav nav a{position:relative}
+.nav nav a::after{content:'';position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--blue);transition:right .2s ease}
+.nav nav a:hover{color:var(--blue)}
+.nav nav a:hover::after{right:0}
+.text-link:hover{color:var(--blue)}
 .menu-toggle{position:absolute;width:1px;height:1px;opacity:0}
 .menu{display:none;background:none;color:var(--white);border:0;font:inherit;cursor:pointer}
 .menu-toggle:focus-visible~.menu{outline:2px solid var(--blue);outline-offset:2px}
 
 /* Hero */
-.hero{min-height:640px;padding:72px 0 92px;background:radial-gradient(circle at 78% 20%,#0d245c55,transparent 28%)}
+.hero{position:relative;min-height:640px;padding:72px 0 92px;background:radial-gradient(circle at 78% 20%,#0d245c55,transparent 28%);overflow:hidden}
+.hero-top{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
 .eyebrow{font:600 11px 'Space Grotesk',monospace;letter-spacing:.14em;color:var(--blue)}
 .logo{display:block;width:min(590px,100%);min-width:220px;height:auto;aspect-ratio:1600/750;margin:33px 0 -8px}
 .hero h1,.section h2{margin:0;letter-spacing:-.03em;font-weight:600;font-size:clamp(40px,6vw,56px);max-width:900px;line-height:1.08}
 .lead{font-size:18px;line-height:1.55;color:#c5c6ca;max-width:680px;margin:26px 0;font-family:Inter,Arial,sans-serif}
-.button{display:inline-flex;gap:24px;align-items:center;padding:15px 18px;background:var(--blue-deep);color:var(--white);text-decoration:none;font-size:13px;font-weight:700}
-.button:hover{background:var(--blue)}
-.button span{font-size:20px}
+.button{display:inline-flex;gap:24px;align-items:center;padding:15px 18px;background:var(--blue-deep);color:var(--white);text-decoration:none;font-size:13px;font-weight:700;border:1px solid transparent;transition:background .2s ease,transform .2s ease,border-color .2s ease}
+.button:hover{background:var(--blue);transform:translateY(-2px)}
+.button:active{transform:translateY(0)}
+.button span{font-size:20px;transition:transform .2s ease}
+.button:hover span{transform:translateX(4px)}
+
+/* Status badge */
+.status-badge{display:inline-flex;align-items:center;gap:8px;font:600 10px 'Space Grotesk',monospace;letter-spacing:.12em;color:var(--muted);border:1px solid var(--card-line);padding:7px 12px;border-radius:999px;background:#0000004d}
+.status-badge .dot{width:7px;height:7px;border-radius:50%;background:#37d67a;box-shadow:0 0 0 0 rgba(55,214,122,.6);animation:dot-pulse 2s ease-out infinite}
+@keyframes dot-pulse{0%{box-shadow:0 0 0 0 rgba(55,214,122,.55)}70%{box-shadow:0 0 0 8px rgba(55,214,122,0)}100%{box-shadow:0 0 0 0 rgba(55,214,122,0)}}
+
+/* Radar decoration */
+.hero>.hero-top,.hero>.logo,.hero>h1,.hero>.lead,.hero>.button{position:relative;z-index:1}
+.radar{position:absolute;right:-60px;top:-60px;width:420px;height:420px;pointer-events:none;z-index:0}
+.radar span{position:absolute;inset:0;margin:auto;border:1px solid rgba(51,120,244,.35);border-radius:50%;width:60px;height:60px;animation:radar-ping 4.5s ease-out infinite}
+.radar span:nth-child(2){animation-delay:1.5s}
+.radar span:nth-child(3){animation-delay:3s}
+@keyframes radar-ping{0%{width:60px;height:60px;opacity:.9}100%{width:420px;height:420px;opacity:0}}
+@media(max-width:900px){.radar{display:none}}
 
 /* Stat bar */
 .statbar{border-block:1px solid var(--line)}
@@ -55,7 +76,8 @@ p{font-family:Inter,Arial,sans-serif}
 
 /* Card grids (generic) */
 .cards{display:grid;gap:16px;margin-top:48px}
-.cards article{padding:26px;background:var(--ink);border:1px solid var(--card-line)}
+.cards article{padding:26px;background:var(--ink);border:1px solid var(--card-line);transition:border-color .2s ease,transform .2s ease,background .2s ease}
+.cards article:hover{border-color:var(--blue);transform:translateY(-4px);background:#10131c}
 .cards span{font:600 11px 'Space Grotesk';color:var(--blue)}
 .cards h3{margin-top:34px}
 .cards p{font-size:14px;line-height:1.6;color:var(--muted)}
@@ -70,24 +92,28 @@ p{font-family:Inter,Arial,sans-serif}
 
 /* Solutions */
 .solutions-grid{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.solutions-grid article{padding:28px;border:1px solid var(--card-line);background:linear-gradient(135deg,#101b32,#06070a 65%)}
+.solutions-grid article{padding:28px;border:1px solid var(--card-line);background:linear-gradient(135deg,#101b32,#06070a 65%);transition:border-color .2s ease,transform .2s ease}
 .solutions-grid article:nth-child(2n){background:linear-gradient(135deg,#171717,#06070a 65%)}
+.solutions-grid article:hover{border-color:var(--blue);transform:translateY(-4px)}
 
 /* Fleet / roles */
 .role-grid{margin-top:40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.role-grid article{padding:22px;background:var(--ink);border:1px solid var(--card-line)}
+.role-grid article{padding:22px;background:var(--ink);border:1px solid var(--card-line);transition:border-color .2s ease,transform .2s ease}
+.role-grid article:hover{border-color:var(--blue);transform:translateY(-4px)}
 .role-grid span{display:block;font:600 11px 'Space Grotesk';letter-spacing:.08em;color:var(--blue);margin-bottom:10px}
 .role-grid p{font-size:14px;line-height:1.6;color:var(--muted);margin:0}
 
 .scenario-label{margin-top:56px}
 .scenario{margin:16px 0 0;padding:0;list-style:none;counter-reset:step;max-width:760px}
-.scenario li{counter-increment:step;position:relative;padding:14px 0 14px 44px;border-top:1px solid var(--line);font-size:15px;line-height:1.55;color:#d7d8da}
+.scenario li{counter-increment:step;position:relative;padding:14px 0 14px 44px;border-top:1px solid var(--line);font-size:15px;line-height:1.55;color:#d7d8da;transition:padding-left .2s ease,color .2s ease}
+.scenario li:hover{padding-left:50px;color:var(--white)}
 .scenario li:last-child{border-bottom:1px solid var(--line)}
 .scenario li::before{content:counter(step);position:absolute;left:0;top:14px;font:600 12px 'Space Grotesk';color:var(--blue)}
 
 /* Outcomes */
 .outcomes-grid{margin-top:48px;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
-.outcomes-grid li{background:var(--ink);padding:20px 22px;font-size:15px;color:var(--white)}
+.outcomes-grid li{background:var(--ink);padding:20px 22px;font-size:15px;color:var(--white);transition:background .2s ease}
+.outcomes-grid li:hover{background:#11151f}
 
 /* Comparison table */
 .compare-table{margin-top:44px;border:1px solid var(--card-line)}
@@ -123,4 +149,26 @@ footer{border-top:1px solid var(--line);padding:27px 0 38px;display:flex;justify
   .compare-row span:first-child{border-right:0;border-bottom:1px solid var(--card-line)}
   .lead{font-size:16px}
   footer{gap:16px;flex-direction:column}
+}
+
+/* Scroll-reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.is-visible{opacity:1;transform:none}
+
+.stagger>*{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+.stagger.is-visible>*{opacity:1;transform:none}
+.stagger.is-visible>*:nth-child(1){transition-delay:0s}
+.stagger.is-visible>*:nth-child(2){transition-delay:.08s}
+.stagger.is-visible>*:nth-child(3){transition-delay:.16s}
+.stagger.is-visible>*:nth-child(4){transition-delay:.24s}
+.stagger.is-visible>*:nth-child(5){transition-delay:.32s}
+.stagger.is-visible>*:nth-child(6){transition-delay:.4s}
+.stagger.is-visible>*:nth-child(7){transition-delay:.48s}
+.stagger.is-visible>*:nth-child(8){transition-delay:.56s}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal,.stagger>*{opacity:1!important;transform:none!important;transition:none!important}
+  .status-badge .dot,.radar span{animation:none!important}
+  .cards article,.solutions-grid article,.role-grid article,.button,.button span,.scenario li,.outcomes-grid li{transition:none!important}
 }

@@ -32,6 +32,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <noscript><style>.reveal,.stagger>*{opacity:1!important;transform:none!important}</style></noscript>
   </head>
   <body>
     <header class="nav wrap">
@@ -48,7 +49,11 @@
     <main id="top">
 
       <section class="hero wrap">
-        <div class="eyebrow">AUTONOMOUS AERIAL RESPONSE / MOLDOVA</div>
+        <div class="radar" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="hero-top">
+          <div class="eyebrow">AUTONOMOUS AERIAL RESPONSE / MOLDOVA</div>
+          <div class="status-badge"><i class="dot" aria-hidden="true"></i>SYSTEM STATUS — ONLINE</div>
+        </div>
         <img class="logo" src="assets/wrong-data-logo.png" width="1600" height="750" alt="Wrong Data Autonomous Robotics" />
         <h1>An autonomous aerial response layer for physical sites.</h1>
         <p class="lead">WRONG DATA detects, deploys, observes, coordinates and reports — without requiring a pilot for every mission. Security, monitoring and intelligent drone infrastructure, working as one system.</p>
@@ -56,16 +61,16 @@
       </section>
 
       <section class="statbar">
-        <div class="wrap stats">
-          <div><b>9</b><span>Drones in the fleet</span></div>
-          <div><b>3</b><span>Independent groups</span></div>
-          <div><b>1</b><span>Lead + two followers per group</span></div>
+        <div class="wrap stats stagger">
+          <div><b data-count="9">9</b><span>Drones in the fleet</span></div>
+          <div><b data-count="3">3</b><span>Independent groups</span></div>
+          <div><b data-count="1">1</b><span>Lead + two followers per group</span></div>
         </div>
       </section>
 
       <section id="problem" class="section wrap">
         <p class="eyebrow">01 / THE PROBLEM</p>
-        <h2>Manual drone response doesn't scale.</h2>
+        <h2 class="reveal">Manual drone response doesn't scale.</h2>
         <p class="lead">A camera can record an event. An alarm can raise a signal. But a conventional drone still needs a person — to retrieve it, prepare it, fly it, bring it back and recharge it. That's slow, depends on an operator, and breaks down across large sites.</p>
         <p class="lead">WRONG DATA turns the drone into an autonomous part of a site's infrastructure. Once configured, the client doesn't need to be a pilot — they get the result: video, status, route, alert and report.</p>
       </section>
@@ -73,8 +78,8 @@
       <section id="solutions" class="section projects">
         <div class="wrap">
           <p class="eyebrow">02 / SOLUTIONS</p>
-          <h2>Built for how a site actually needs a response.</h2>
-          <div class="solutions-grid">
+          <h2 class="reveal">Built for how a site actually needs a response.</h2>
+          <div class="solutions-grid stagger">
             <article>
               <p class="tag">SECURITY</p>
               <h3>Private &amp; commercial sites</h3>
@@ -105,8 +110,8 @@
 
       <section id="technology" class="section wrap">
         <p class="eyebrow">03 / TECHNOLOGY</p>
-        <h2>One ecosystem, seven working parts.</h2>
-        <div class="cards tech-grid">
+        <h2 class="reveal">One ecosystem, seven working parts.</h2>
+        <div class="cards tech-grid stagger">
           <article><span>01</span><h3>Autonomous drone fleet</h3><p>Nine drones organised into independent groups that launch, operate and return without a pilot.</p></article>
           <article><span>02</span><h3>AI &amp; computer vision</h3><p>Reads events, tells signal from noise, and helps prioritise the response.</p></article>
           <article><span>03</span><h3>RTK/GNSS navigation</h3><p>Centimetre-level positioning for precise flight paths and precision landing.</p></article>
@@ -120,17 +125,17 @@
       <section id="fleet" class="section projects">
         <div class="wrap">
           <p class="eyebrow">04 / AUTONOMOUS DRONE FLEET</p>
-          <h2>Nine drones. Three independent groups.</h2>
+          <h2 class="reveal">Nine drones. Three independent groups.</h2>
           <p class="lead">Each group runs one lead drone and two follower drones. The lead receives the mission, reads the situation, coordinates the group and reallocates resources. Followers patrol, monitor from separate angles, or handle sub-tasks. Every drone can operate alone — but the system's strength is coordinated group behaviour.</p>
 
-          <div class="role-grid">
+          <div class="role-grid stagger">
             <article><span>LEAD DRONE</span><p>Receives the mission, analyses the situation, coordinates the group and reallocates resources.</p></article>
             <article><span>FOLLOWER DRONE</span><p>Patrols, monitors from a different angle, or carries out a separate sub-task alongside the lead.</p></article>
             <article><span>FOLLOWER DRONE</span><p>Works in parallel with the other follower, keeping coverage on more than one point at once.</p></article>
           </div>
 
           <p class="eyebrow scenario-label">SCENARIO / TWO EVENTS, ONE SYSTEM</p>
-          <ol class="scenario">
+          <ol class="scenario stagger">
             <li>An alarm or the AI detects an intrusion at the site boundary.</li>
             <li>A group of three drones launches from the Drone Port.</li>
             <li>The lead drone arrives and splits the area into observation sectors.</li>
@@ -146,9 +151,9 @@
 
       <section id="drone-port" class="section wrap">
         <p class="eyebrow">05 / MODULAR DRONE PORT</p>
-        <h2>An autonomous station for one group of three.</h2>
+        <h2 class="reveal">An autonomous station for one group of three.</h2>
         <p class="lead">The Modular Drone Port is the ground infrastructure a drone group returns to between missions.</p>
-        <div class="cards port-grid">
+        <div class="cards port-grid stagger">
           <article><h3>Protected storage</h3><p>Drones are housed and shielded between missions.</p></article>
           <article><h3>Automatic roof</h3><p>Opens before launch, closes on recovery.</p></article>
           <article><h3>Autonomous charging</h3><p>No manual handling between flights.</p></article>
@@ -164,8 +169,8 @@
       <section id="outcomes" class="section projects">
         <div class="wrap">
           <p class="eyebrow">06 / WHAT YOU GET</p>
-          <h2>Not a video feed. A result you can act on.</h2>
-          <ul class="outcomes-grid">
+          <h2 class="reveal">Not a video feed. A result you can act on.</h2>
+          <ul class="outcomes-grid stagger">
             <li>Who and where was detected</li>
             <li>Which sector was covered</li>
             <li>Which drones were involved</li>
@@ -180,8 +185,8 @@
 
       <section id="difference" class="section wrap">
         <p class="eyebrow">07 / WHY IT'S DIFFERENT</p>
-        <h2>This isn't a drone with a camera.</h2>
-        <div class="compare-table">
+        <h2 class="reveal">This isn't a drone with a camera.</h2>
+        <div class="compare-table reveal">
           <div class="compare-row compare-head"><span>Conventional drone</span><span>WRONG DATA system</span></div>
           <div class="compare-row"><span>Needs an operator</span><span>Missions launch on event, schedule or voice command</span></div>
           <div class="compare-row"><span>One drone, one point of view</span><span>A group of three covers multiple sectors</span></div>
@@ -193,7 +198,7 @@
 
       <section id="company" class="section wrap company">
         <p class="eyebrow">08 / COMPANY</p>
-        <h2>Built for systems that act.</h2>
+        <h2 class="reveal">Built for systems that act.</h2>
         <p class="lead">WRONG DATA is an autonomous robotics company based in Chișinău, Moldova. We develop practical hardware and software that connects aerial robots with intelligent ground infrastructure.</p>
         <a class="text-link" href="https://www.linkedin.com/company/wrong-data/" target="_blank" rel="noreferrer">Follow our work on LinkedIn →</a>
       </section>
