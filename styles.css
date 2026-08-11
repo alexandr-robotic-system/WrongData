@@ -51,12 +51,15 @@ h1,h2,h3,.brand,.eyebrow,.button,nav a,.tag,footer,.ui-label{font-family:'Space 
 
 /* Radar decoration */
 .hero>.hero-top,.hero>.logo,.hero>h1,.hero>.lead,.hero>.button{position:relative;z-index:1}
-.radar{position:absolute;right:-60px;top:-60px;width:420px;height:420px;pointer-events:none;z-index:0}
-.radar span{position:absolute;inset:0;margin:auto;border:1px solid rgba(51,120,244,.35);border-radius:50%;width:60px;height:60px;animation:radar-ping 4.5s ease-out infinite}
-.radar span:nth-child(2){animation-delay:1.5s}
-.radar span:nth-child(3){animation-delay:3s}
-@keyframes radar-ping{0%{width:60px;height:60px;opacity:.9}100%{width:420px;height:420px;opacity:0}}
-@media(max-width:900px){.radar{display:none}}
+.radar{position:absolute;right:-40px;top:-40px;width:360px;height:360px;pointer-events:none;z-index:0}
+.radar::before{content:'';position:absolute;top:50%;left:50%;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--blue);box-shadow:0 0 18px 4px rgba(51,120,244,.85);animation:radar-core 2.4s ease-in-out infinite}
+.radar span{position:absolute;inset:0;margin:auto;border:1.5px solid rgba(90,150,255,.65);border-radius:50%;width:40px;height:40px;box-shadow:0 0 16px rgba(51,120,244,.3);animation:radar-ping 3.6s ease-out infinite}
+.radar span:nth-child(2){animation-delay:1.2s}
+.radar span:nth-child(3){animation-delay:2.4s}
+@keyframes radar-ping{0%{width:40px;height:40px;opacity:1}100%{width:360px;height:360px;opacity:0}}
+@keyframes radar-core{0%,100%{opacity:.6;transform:scale(1)}50%{opacity:1;transform:scale(1.7)}}
+@media(max-width:900px){.radar{transform:scale(.65);right:-70px;top:-30px}}
+@media(max-width:680px){.radar{display:none}}
 
 /* Stat bar */
 .statbar{border-block:1px solid var(--line)}
@@ -169,6 +172,6 @@ footer{border-top:1px solid var(--line);padding:27px 0 38px;display:flex;justify
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal,.stagger>*{opacity:1!important;transform:none!important;transition:none!important}
-  .status-badge .dot,.radar span{animation:none!important}
+  .status-badge .dot,.radar span,.radar::before{animation:none!important}
   .cards article,.solutions-grid article,.role-grid article,.button,.button span,.scenario li,.outcomes-grid li{transition:none!important}
 }
