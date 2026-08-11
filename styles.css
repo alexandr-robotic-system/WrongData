@@ -38,7 +38,7 @@ h1,h2,h3,.brand,.eyebrow,.button,nav a,.tag,footer,.ui-label{font-family:'Space 
 .hero{position:relative;min-height:640px;padding:72px 0 92px;background:radial-gradient(circle at 78% 20%,#0d245c55,transparent 28%);overflow:hidden}
 .hero-top{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
 .eyebrow{font:600 11px 'Space Grotesk',monospace;letter-spacing:.14em;color:var(--blue)}
-.logo{display:block;width:min(590px,100%);min-width:220px;height:auto;aspect-ratio:1600/750;margin:33px 0 -8px}
+.logo{display:block;width:min(590px,100%);min-width:220px;height:auto;aspect-ratio:1600/750;margin:8px 0 -8px}
 .hero h1,.section h2{margin:0;letter-spacing:-.03em;font-weight:600;font-size:clamp(40px,6vw,56px);max-width:900px;line-height:1.08}
 .lead{font-size:18px;line-height:1.55;color:#c5c6ca;max-width:680px;margin:26px 0;font-family:Inter,Arial,sans-serif}
 .button{display:inline-flex;gap:24px;align-items:center;padding:15px 18px;background:var(--blue-deep);color:var(--white);text-decoration:none;font-size:13px;font-weight:700;border:1px solid transparent;transition:background .2s ease,transform .2s ease,border-color .2s ease}
@@ -54,7 +54,7 @@ h1,h2,h3,.brand,.eyebrow,.button,nav a,.tag,footer,.ui-label{font-family:'Space 
 
 /* Radar decoration */
 .hero>.hero-top,.hero>.logo,.hero>h1,.hero>.lead,.hero>.button{position:relative;z-index:1}
-.radar{position:absolute;right:-40px;top:-40px;width:360px;height:360px;pointer-events:none;z-index:0}
+.radar{position:absolute;right:-10px;top:-10px;width:360px;height:360px;pointer-events:none;z-index:0}
 .radar::before{content:'';position:absolute;top:50%;left:50%;width:8px;height:8px;margin:-4px;border-radius:50%;background:var(--blue);box-shadow:0 0 18px 4px rgba(51,120,244,.85);animation:radar-core 3.6s ease-in-out infinite;z-index:2}
 .radar>span{position:absolute;inset:0;margin:auto;border:1.5px solid rgba(90,150,255,.65);border-radius:50%;width:40px;height:40px;box-shadow:0 0 16px rgba(51,120,244,.3);animation:radar-ping 5.4s ease-out infinite}
 .radar>span:nth-child(2){animation-delay:1.8s}
