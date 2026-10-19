@@ -107,29 +107,70 @@
       </a>
       <button class="menu" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
       <nav id="site-nav" aria-label="Primary">
-        <a href="/solutions/">Solutions</a><a href="/technology/">Technology</a><a href="/fleet/">Fleet</a><a href="/drone-port/">Drone Port</a><a href="/company/" class="active" aria-current="page">Company</a>
+        <a href="/solutions/">Solutions</a><a href="/technology/">Technology</a><a href="/fleet/">Fleet</a><a href="/drone-port/">Drone Port</a><a href="/scenarios/">Scenarios</a><a href="/company/" class="active" aria-current="page">Company</a><a href="/contact/">Contact</a>
       </nav>
     </header>
     <main id="main">
 
       <div class="wrap page-intro">
         <a class="back-link" href="/">← Overview</a>
-        <p class="eyebrow">05 / COMPANY</p>
+        <p class="eyebrow">06 / COMPANY</p>
         <h1>Built for systems that act.</h1>
       </div>
 
       <section id="company" class="section wrap company">
-        <span class="ghost-num" aria-hidden="true">05</span>
+        <span class="ghost-num" aria-hidden="true">06</span>
         <p class="lead">WRONG DATA is an autonomous robotics company based in Chișinău, Moldova. We develop practical hardware and software that connects aerial robots with intelligent ground infrastructure — the drone fleet, the Modular Drone Port and the cloud platform that ties them together.</p>
 
+
+        <h2 class="sub reveal" id="status">Where the system stands today.</h2>
+        <p class="lead">We label every part of the platform by how far it has actually been proven — not by whether it exists in a slide. This table is updated as milestones are passed.</p>
+        <div class="status-legend">
+          <span class="stage stage-flight">FLIGHT-TESTED</span>
+          <span class="stage stage-bench">BENCH / CODE</span>
+          <span class="stage stage-design">DESIGN</span>
+          <span class="stage stage-idea">CONCEPT</span>
+        </div>
+        <div class="status-table reveal">
+          <div class="status-row"><span>Autonomous flight stack</span><span>ArduPilot (ArduCopter 4.6) on in-house 7-inch quadcopters: arming, flight modes, telemetry, mission upload and autonomous waypoint missions.</span><span class="stage stage-flight">FLIGHT-TESTED</span></div>
+          <div class="status-row"><span>Fleet configuration</span><span>One shared flight-parameter baseline for the whole fleet, per-drone profiles and a roll-out tool with automatic backups — so every new airframe starts from a proven configuration.</span><span class="stage stage-bench">BENCH / CODE</span></div>
+          <div class="status-row"><span>RTK/GNSS positioning</span><span>RTK base and rover on ZED-F9P with correction streaming; RTK Fix achieved. Field stability of the fix and its use for precision landing are under test.</span><span class="stage stage-bench">BENCH / CODE</span></div>
+          <div class="status-row"><span>Remote command &amp; mission library</span><span>Drone selection, commands, status and a mission library over Telegram, MQTT and AWS IoT Core; on-board MAVLink bridge on ESP32.</span><span class="stage stage-bench">BENCH / CODE</span></div>
+          <div class="status-row"><span>Drone-to-base radio link</span><span>Existing short-range link under evaluation; LoRa and 5 GHz Wi-Fi links being assessed for command, telemetry, RTK corrections and video as separate channels.</span><span class="stage stage-bench">BENCH / CODE</span></div>
+          <div class="status-row"><span>Modular Drone Port</span><span>Three-pad modular station (~60 × 60 cm pads), AprilTag landing markers, mechanical self-centring, a roof that fully clears the pad, autonomous charging.</span><span class="stage stage-design">DESIGN</span></div>
+          <div class="status-row"><span>Group coordination (lead + followers)</span><span>Mission allocation across a group of three, patrol rules, escort and battery handover — the logic shown in the <a class="text-link" href="/scenarios/">scenarios</a>.</span><span class="stage stage-design">DESIGN</span></div>
+          <div class="status-row"><span>Computer vision &amp; AI events</span><span>Event detection, person and vehicle recognition, face capture to the response post.</span><span class="stage stage-idea">CONCEPT</span></div>
+          <div class="status-row"><span>Guard watch, voice control, ground robots</span><span>Wrist interface for bound drones, voice and gesture commands, UGV units on the shared task queue.</span><span class="stage stage-idea">CONCEPT</span></div>
+        </div>
+
+        <h2 class="sub reveal">What we build on.</h2>
+        <p class="lead">Open, proven components where they exist; our own hardware and software where they don't.</p>
+        <ul class="stack-list stagger">
+          <li><b>FLIGHT CONTROL</b>ArduPilot on STM32H743-class flight controllers; Mission Planner for configuration and missions.</li>
+          <li><b>NAVIGATION</b>u-blox ZED-F9P RTK base and rover, GNSS + compass modules; optical flow, VIO and rangefinders under evaluation for GNSS-denied landing.</li>
+          <li><b>ON-BOARD COMPUTE</b>Raspberry Pi 5 as the lead-drone companion computer; ESP32-class bridges for MAVLink and the correction link.</li>
+          <li><b>AIRFRAMES</b>7-inch and 10-inch quadcopter frames built and configured in-house, one shared parameter baseline across the fleet.</li>
+          <li><b>COMMAND &amp; CLOUD</b>MAVLink end to end; Telegram, MQTT and AWS IoT Core for remote command, status and the mission library.</li>
+          <li><b>GROUND STATION</b>Modular Drone Port: AprilTag precision landing, self-centring pads, autonomous charging, weather protection.</li>
+        </ul>
+
+        <h2 class="sub reveal">Roadmap.</h2>
+        <ol class="scenario stagger">
+          <li><b>Reliable single-drone loop</b> — launch, mission, return and precision landing on a pad, repeated without a pilot.</li>
+          <li><b>Stable long-range link</b> — command, telemetry and RTK corrections proven at site-scale distances, with safe behaviour on link loss.</li>
+          <li><b>First Drone Port module</b> — one pad, automatic roof and charging, closed-loop with the drone.</li>
+          <li><b>Group of three</b> — lead and followers on one mission, patrol and escort rules in flight.</li>
+          <li><b>First pilot site</b> — scheduled perimeter patrols for a real customer, with reports they can act on.</li>
+        </ol>
+
         <div class="cta-row">
-          <a class="button" href="mailto:alexandr@wrongdata.md">Start a conversation <span>→</span></a>
+          <a class="button" href="/contact/">Talk to us about a pilot <span>→</span></a>
           <a class="text-link" href="https://www.linkedin.com/company/wrong-data/" target="_blank" rel="noopener noreferrer">Follow our work on LinkedIn →</a>
         </div>
 
         <nav class="pager" aria-label="Page navigation">
-          <a class="prev" href="/drone-port/"><small>← BACK</small><span class="pager-title">Drone Port</span></a>
-          <a class="next" href="/"><small>NEXT →</small><span class="pager-title">Overview</span></a>
+          <a class="prev" href="/scenarios/"><small>← BACK</small><span class="pager-title">Scenarios</span></a>
+          <a class="next" href="/contact/"><small>NEXT →</small><span class="pager-title">Contact</span></a>
         </nav>
       </section>
 
@@ -144,7 +185,7 @@
           <p class="muted">Autonomous robotics.<br />Chișinău, Moldova.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer">
-          <a href="/solutions/">Solutions</a><a href="/technology/">Technology</a><a href="/fleet/">Fleet</a><a href="/drone-port/">Drone Port</a><a href="/company/" class="active" aria-current="page">Company</a>
+          <a href="/solutions/">Solutions</a><a href="/technology/">Technology</a><a href="/fleet/">Fleet</a><a href="/drone-port/">Drone Port</a><a href="/scenarios/">Scenarios</a><a href="/company/" class="active" aria-current="page">Company</a><a href="/contact/">Contact</a>
         </nav>
         <div class="footer-contact">
           <a class="text-link" href="mailto:alexandr@wrongdata.md">alexandr@wrongdata.md</a>

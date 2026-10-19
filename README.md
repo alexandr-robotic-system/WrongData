@@ -39,3 +39,11 @@ In GitHub **Settings → Pages → Custom domain**, enter `wrongdata.md`. GitHub
 - **Hero logo**: `wrong-data-logo-600.png` + `-1200.png` via `srcset`; the 1600px original was removed.
 - **`404.html`** is served automatically by GitHub Pages for unknown URLs.
 - **`sitemap.xml`**: bump `<lastmod>` on the page you edit.
+
+## Stage 2 (Oct 2026): scenarios, contact, status
+
+- **`/scenarios/`** — both simulation films (`assets/video/*.mp4`, H.264 720p, `preload="none"`, poster JPGs) with the eight cases written out as steps and rules. `VideoObject` JSON-LD included.
+- **`/contact/`** — contact page. The buttons are prefilled `mailto:` links. To add a real form, drop in a Formspree/Web3Forms endpoint (`<form action="https://formspree.io/f/XXXX" method="POST">`) — no backend needed on Pages.
+- **`/company/#status`** — status & roadmap table. Four stages: FLIGHT-TESTED · BENCH / CODE · DESIGN · CONCEPT. Move a row up only when the milestone is actually passed.
+- Navigation order: Solutions → Technology → Fleet → Drone Port → Scenarios → Company → Contact. Section numbers follow this order.
+- Fleet copy now says "groups of three" rather than a fixed drone count; the home stat bar shows drones per group, airframes in build, and scenario count.

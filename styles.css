@@ -181,7 +181,7 @@ p{font-family:Inter,Arial,sans-serif}
 .hub-grid{margin-top:44px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .hub-card{display:flex;flex-direction:column;padding:26px;background:var(--ink);border:1px solid var(--card-line);text-decoration:none;color:inherit;transition:border-color .2s ease,transform .2s ease,background .2s ease}
 .hub-card:hover{border-color:var(--blue);transform:translateY(-4px);background:#10131c}
-.hub-card:last-child{grid-column:span 2}
+.hub-card:last-child:nth-child(3n+1){grid-column:span 2}
 .hub-num{font:600 11px 'Space Grotesk';color:var(--blue)}
 .hub-card h3{margin-top:30px}
 .hub-card p{font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 18px;flex:1}
@@ -291,7 +291,7 @@ p{font-family:Inter,Arial,sans-serif}
   .footer-grid{grid-template-columns:1fr 1fr;gap:28px 24px}
   .footer-brand{grid-column:1/-1}
   .hub-grid{grid-template-columns:repeat(2,1fr)}
-  .hub-card:last-child{grid-column:span 2}
+  .hub-card:last-child:nth-child(odd){grid-column:span 2}
 }
 
 @media(max-width:680px){
@@ -340,4 +340,73 @@ p{font-family:Inter,Arial,sans-serif}
   .radar-drone-f1{opacity:1!important;transform:translate(-50%,-50%) translate(-140px,-60px)!important}
   .radar-drone-f2{opacity:1!important;transform:translate(-50%,-50%) translate(140px,-60px)!important}
   .cards article,.solutions-grid article,.role-grid article,.button,.button span,.scenario li,.outcomes-grid li{transition:none!important}
+}
+
+/* ---- Stage 2 additions (Oct 2026) ---- */
+
+/* Video blocks */
+.video-block{margin-top:44px;border:1px solid var(--card-line);background:var(--ink)}
+.video-block video{display:block;width:100%;height:auto;aspect-ratio:16/9;background:#000}
+.video-caption{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:14px 18px;border-top:1px solid var(--card-line);font-size:13px;color:var(--muted)}
+.video-caption b{font:600 11px 'Space Grotesk';letter-spacing:.1em;color:var(--blue)}
+.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:44px}
+.video-grid .video-block{margin-top:0}
+.video-grid a.video-block{display:block;text-decoration:none;color:inherit;transition:border-color .2s ease}
+.video-grid a.video-block:hover{border-color:var(--blue)}
+.video-grid img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+
+/* Scenario cases */
+.case{padding:56px 0 8px;border-top:1px solid var(--line)}
+.case:first-of-type{border-top:0;padding-top:24px}
+.case-head{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:baseline}
+.case-head .tag{font:600 11px 'Space Grotesk';letter-spacing:.12em;color:var(--blue)}
+.case h3{margin:0;font-size:clamp(26px,3.4vw,34px);letter-spacing:-.02em;font-weight:600;line-height:1.15}
+.case .lead{margin:18px 0 0}
+.case .scenario{margin-top:28px}
+.rules{margin:28px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);max-width:760px}
+.rules li{background:var(--ink);padding:16px 18px;font-size:14px;line-height:1.5;color:#d7d8da}
+.rules li b{display:block;font:600 11px 'Space Grotesk';letter-spacing:.1em;color:var(--blue);margin-bottom:6px}
+
+/* Status & roadmap */
+.status-legend{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:28px;font-size:12px;color:var(--muted)}
+.stage{display:inline-flex;align-items:center;gap:8px;font:600 10px 'Space Grotesk';letter-spacing:.1em;white-space:nowrap}
+.stage::before{content:'';width:8px;height:8px;border-radius:50%;border:1.5px solid var(--muted)}
+.stage-flight{color:var(--white)}.stage-flight::before{background:#37d67a;border-color:#37d67a}
+.stage-bench{color:var(--white)}.stage-bench::before{background:var(--blue);border-color:var(--blue)}
+.stage-design{color:var(--muted)}.stage-design::before{border-color:var(--silver)}
+.stage-idea{color:var(--muted)}
+.status-table{margin-top:28px;border:1px solid var(--card-line)}
+.status-row{display:grid;grid-template-columns:1.2fr 2fr 150px;gap:18px;padding:16px 22px;border-top:1px solid var(--card-line);font-size:14px;line-height:1.5}
+.status-row:first-child{border-top:0}
+.status-row>span:first-child{color:var(--white);font-weight:500}
+.status-row>span:nth-child(2){color:var(--muted)}
+.status-row>span:last-child{justify-self:end}
+.stack-list{margin:28px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.stack-list li{background:var(--ink);padding:18px 20px;font-size:14px;line-height:1.5;color:#d7d8da}
+.stack-list li b{display:block;font:600 11px 'Space Grotesk';letter-spacing:.1em;color:var(--blue);margin-bottom:6px}
+.section h2.sub{font-size:clamp(26px,3.4vw,34px);margin-top:88px}
+
+/* Contact */
+#contact.section{padding-top:40px}
+.contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;margin-top:40px}
+.contact-list{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.contact-list li{display:grid;grid-template-columns:140px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.5}
+.contact-list li span:first-child{font:600 11px 'Space Grotesk';letter-spacing:.12em;color:var(--blue);padding-top:4px}
+.contact-list a{color:var(--white);text-decoration:none;border-bottom:1px solid var(--card-line);transition:border-color .2s ease,color .2s ease}
+.contact-list a:hover{color:var(--blue);border-color:var(--blue)}
+.contact-aside{padding:28px;background:var(--ink);border:1px solid var(--card-line)}
+.contact-aside h3{margin:0 0 12px;font-size:18px}
+.contact-aside p{font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 18px}
+.contact-aside ul{margin:0 0 24px;padding-left:18px;font-size:14px;line-height:1.7;color:#d7d8da}
+
+@media(max-width:900px){
+  .status-row{grid-template-columns:1fr;gap:6px}
+  .status-row>span:last-child{justify-self:start}
+  .stack-list{grid-template-columns:1fr 1fr}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+  .video-grid,.rules,.stack-list{grid-template-columns:1fr}
+  .case-head{grid-template-columns:1fr;gap:10px}
+  .contact-list li{grid-template-columns:1fr;gap:6px}
 }
