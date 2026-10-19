@@ -30,3 +30,12 @@ In GitHub **Settings → Pages → Custom domain**, enter `wrongdata.md`. GitHub
 
 - Contact email in `index.html` is `alexandr@wrongdata.md`; update it if this changes.
 - Replace the LinkedIn URL if the final page uses another URL.
+
+## Technical notes (Oct 2026)
+
+- **Fonts** are self-hosted in `assets/fonts/` (Space Grotesk and Inter, variable WOFF2, SIL OFL) — no requests to Google Fonts. The two Latin files are preloaded in every page `<head>`.
+- **Structured data**: every page carries a JSON-LD block (`Organization`, `WebSite`, `WebPage` + `BreadcrumbList`). Update the organization block in `index.html` if the address, email or LinkedIn URL changes.
+- **Accessibility**: skip link, visible `:focus-visible` outlines, `aria-current="page"` on the active nav link, mobile menu is a real `<button>` with `aria-expanded` (toggled in `script.js`, closes on Escape / outside click).
+- **Hero logo**: `wrong-data-logo-600.png` + `-1200.png` via `srcset`; the 1600px original was removed.
+- **`404.html`** is served automatically by GitHub Pages for unknown URLs.
+- **`sitemap.xml`**: bump `<lastmod>` on the page you edit.

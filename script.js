@@ -1,6 +1,18 @@
 const yearEl=document.getElementById('year');if(yearEl)yearEl.textContent=new Date().getFullYear();
-const menuToggle=document.getElementById('menu-toggle');
-if(menuToggle){document.querySelectorAll('.nav nav a').forEach(function(link){link.addEventListener('click',function(){menuToggle.checked=false})})}
+/* Mobile menu (accessible toggle button) */
+const header=document.querySelector('.nav');
+const menuBtn=document.querySelector('.menu');
+if(header && menuBtn){
+  const setOpen=function(open){
+    header.classList.toggle('is-open',open);
+    menuBtn.setAttribute('aria-expanded',open?'true':'false');
+    menuBtn.textContent=open?'Close':'Menu';
+  };
+  menuBtn.addEventListener('click',function(){setOpen(!header.classList.contains('is-open'))});
+  document.querySelectorAll('.nav nav a').forEach(function(link){link.addEventListener('click',function(){setOpen(false)})});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape' && header.classList.contains('is-open')){setOpen(false);menuBtn.focus()}});
+  document.addEventListener('click',function(e){if(header.classList.contains('is-open') && !header.contains(e.target))setOpen(false)});
+}
 
 /* Scroll reveal */
 const revealTargets=document.querySelectorAll('.reveal,.stagger');
