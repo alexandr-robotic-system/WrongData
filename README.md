@@ -47,3 +47,11 @@ In GitHub **Settings → Pages → Custom domain**, enter `wrongdata.md`. GitHub
 - **`/company/#status`** — status & roadmap table. Four stages: FLIGHT-TESTED · BENCH / CODE · DESIGN · CONCEPT. Move a row up only when the milestone is actually passed.
 - Navigation order: Solutions → Technology → Fleet → Drone Port → Scenarios → Company → Contact. Section numbers follow this order.
 - Fleet copy now says "groups of three" rather than a fixed drone count; the home stat bar shows drones per group, airframes in build, and scenario count.
+
+## Stage 3 (Oct 2026): Romanian and Russian versions
+
+- English lives at the root; Romanian at `/ro/...`, Russian at `/ru/...` — same structure, same assets. Every page carries `hreflang` links for en / ro / ru / x-default, and `sitemap.xml` lists all three with `xhtml:link` alternates.
+- A language switcher (EN · RO · RU) sits in the header of every page and links to the same page in the other language.
+- Cyrillic is served from Inter subsets (`assets/fonts/inter-cyrillic*.woff2`); Space Grotesk has no Cyrillic glyphs, so the `@font-face` block maps Cyrillic ranges of the "Space Grotesk" family to Inter — no per-language CSS needed.
+- **Editing text:** edit the English page, then apply the same change in `/ro/` and `/ru/`. The localized pages are plain HTML — there is no build step.
+- **`tools/check_site.py`** validates HTML, JSON-LD, internal links, `<h1>` count and hreflang sets; it runs in GitHub Actions on every push (`.github/workflows/check.yml`). Run it locally with `python3 tools/check_site.py` (needs `pip install html5lib`).
