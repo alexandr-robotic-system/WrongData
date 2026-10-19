@@ -64,3 +64,9 @@ In GitHub **Settings → Pages → Custom domain**, enter `wrongdata.md`. GitHub
 - **`/faq/`** — 12 questions with `FAQPage` JSON-LD; **`/privacy/`** — privacy notice. Both linked from the footer on every page (header nav unchanged).
 - All of the above exists in EN, RO and RU. New strings were added to the translation dictionaries used to generate `/ro/` and `/ru/`.
 - Facts to keep true as the company changes: timelines in "How we work", the insurance sentence, the pricing model in the FAQ, and the founder paragraph.
+
+## Stage 5 (Oct 2026): landing redesign
+
+- Home is now a short landing: hero with a muted 9-second loop from the simulation (`assets/video/hero-loop.mp4`, poster fallback, no autoplay for reduced-motion / data-saver), one headline, two CTAs; Detect · Respond · Report strip; one playable demo video; four "who it's for" tiles; Fleet / Drone Port / Technology cards; honest status strip; closing CTA.
+- The "Conventional drone vs WRONG DATA" table moved from home to Technology (`#difference`). Solutions articles have anchors (`#security`, `#agriculture`, `#industrial`, `#smart-property`).
+- Every subpage ends with a "Tell us about your site" band before the pager.

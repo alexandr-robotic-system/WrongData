@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="WRONG DATA builds autonomous drone infrastructure for security, agriculture and industrial monitoring — detect, deploy, observe, coordinate and report, without a pilot for every mission." />
+    <meta name="description" content="Дроны, которые охраняют ваш объект без пилота. WRONG DATA строит автономные группы дронов и наземные станции для охраны, сельского хозяйства и промышленного мониторинга в Молдове — они сами взлетают, патрулируют, возвращаются и отчитываются." />
     <title>WRONG DATA — Автономная робототехника</title>
     <link rel="canonical" href="https://wrongdata.md/ru/" />
     <link rel="alternate" hreflang="en" href="https://wrongdata.md/" />
@@ -96,178 +96,115 @@
     </header>
     <main id="main">
 
-      <section class="hero wrap">
-        <div class="radar" aria-hidden="true">
-          <span></span><span></span><span></span>
-          <div class="radar-sweep"></div>
-          <div class="radar-port">
-            <div class="port-case" aria-hidden="true">
-              <div class="port-body"></div>
-              <div class="port-lid-hinge port-lid-hinge-l"><span class="port-lid"></span></div>
-              <div class="port-lid-hinge port-lid-hinge-r"><span class="port-lid"></span></div>
-            </div>
-            <span class="radar-port-ping" aria-hidden="true"></span>
-            <!-- Lead drone (centre) -->
-            <div class="radar-drone-icon radar-drone-lead">
-              <svg class="drone-body" viewBox="0 0 100 40" aria-hidden="true">
-                <line x1="8" y1="14" x2="92" y2="14" stroke="var(--blue)" stroke-width="5"/>
-                <circle class="drone-rotor" cx="8" cy="14" r="8" fill="none" stroke="var(--blue)" stroke-width="3"/>
-                <circle class="drone-rotor" cx="92" cy="14" r="8" fill="none" stroke="var(--blue)" stroke-width="3"/>
-                <rect x="30" y="17" width="40" height="17" rx="6" fill="var(--blue-deep)" stroke="var(--blue)" stroke-width="2"/>
-              </svg>
-              <span class="drone-glow" aria-hidden="true"></span>
-            </div>
-            <!-- Follower drone (left) -->
-            <div class="radar-drone-icon radar-drone-f1">
-              <svg class="drone-body" viewBox="0 0 100 40" aria-hidden="true">
-                <line x1="10" y1="16" x2="90" y2="16" stroke="var(--white)" stroke-width="4"/>
-                <circle class="drone-rotor" cx="10" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
-                <circle class="drone-rotor" cx="90" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
-                <rect x="33" y="19" width="34" height="14" rx="5" fill="var(--ink)" stroke="var(--white)" stroke-width="2"/>
-              </svg>
-              <span class="drone-glow" aria-hidden="true"></span>
-            </div>
-            <!-- Follower drone (right) -->
-            <div class="radar-drone-icon radar-drone-f2">
-              <svg class="drone-body" viewBox="0 0 100 40" aria-hidden="true">
-                <line x1="10" y1="16" x2="90" y2="16" stroke="var(--white)" stroke-width="4"/>
-                <circle class="drone-rotor" cx="10" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
-                <circle class="drone-rotor" cx="90" cy="16" r="7" fill="none" stroke="var(--white)" stroke-width="2.5"/>
-                <rect x="33" y="19" width="34" height="14" rx="5" fill="var(--ink)" stroke="var(--white)" stroke-width="2"/>
-              </svg>
-              <span class="drone-glow" aria-hidden="true"></span>
-            </div>
+      <section class="hero hero-video">
+        <video class="hero-bg" autoplay muted loop playsinline preload="metadata" poster="/assets/video/hero-poster.jpg" aria-hidden="true" tabindex="-1">
+          <source src="/assets/video/hero-loop.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-shade" aria-hidden="true"></div>
+        <div class="wrap hero-inner">
+          <p class="eyebrow">АВТОНОМНАЯ ДРОН-ИНФРАСТРУКТУРА · КИШИНЁВ, МОЛДОВА</p>
+          <h1>Дроны, которые охраняют ваш объект. Без пилота.</h1>
+          <p class="lead">Группа из трёх дронов и наземная станция, которые взлетают по тревоге или расписанию, патрулируют, возвращаются и заряжаются сами — и присылают вам результат, а не стену видео.</p>
+          <div class="cta-row">
+            <a class="button" href="/ru/scenarios/">Смотреть, как работает · 2 мин <span>→</span></a>
+            <a class="text-link" href="/ru/contact/">Запросить оценку объекта →</a>
           </div>
         </div>
-        <img class="logo" src="/assets/wrong-data-logo-600.png" srcset="/assets/wrong-data-logo-600.png 600w, /assets/wrong-data-logo-1200.png 1200w" sizes="(max-width: 640px) calc(100vw - 32px), 590px" width="1600" height="750" alt="Wrong Data — автономная робототехника" fetchpriority="high" decoding="async" />
-        <h1>Автономный воздушный слой реагирования для физических объектов.</h1>
-        <p class="lead">WRONG DATA обнаруживает, запускает, наблюдает, координирует и отчитывается — без пилота на каждую миссию. Охрана, мониторинг и интеллектуальная дрон-инфраструктура, работающие как одна система.</p>
-        <a class="button" href="/ru/contact/">Начать разговор <span>→</span></a>
       </section>
 
       <section class="statbar">
-        <div class="wrap stats stagger">
-          <div><b data-count="3">3</b><span>Дрона в группе — один ведущий, два ведомых</span></div>
-          <div><b data-count="7">7</b><span>Рам в текущей сборке флота</span></div>
-          <div><b data-count="8">8</b><span>Сценариев, один набор правил</span></div>
+        <div class="wrap stats stats-3 stagger">
+          <div><b>01</b><span><strong>Обнаружить.</strong> Тревога, событие камеры или расписание запускают миссию.</span></div>
+          <div><b>02</b><span><strong>Отреагировать.</strong> Дроны взлетают, транслируют видео и держат событие в поле зрения.</span></div>
+          <div><b>03</b><span><strong>Отчитаться.</strong> Кто, где, какой сектор, запись и журнал — у вас в почте.</span></div>
         </div>
       </section>
 
-      <section id="problem" class="section wrap">
+      <section id="demo" class="section wrap">
         <span class="ghost-num" aria-hidden="true">01</span>
-        <p class="eyebrow">01 / ПРОБЛЕМА</p>
-        <h2 class="reveal">Ручное реагирование дронами не масштабируется.</h2>
-        <p class="lead">Камера может записать событие. Сигнализация — подать сигнал. Но обычному дрону всё ещё нужен человек: достать его, подготовить, поднять в воздух, вернуть и зарядить. Это медленно, зависит от оператора и не работает на больших территориях.</p>
-        <p class="lead">WRONG DATA превращает дрон в автономную часть инфраструктуры объекта. После настройки клиенту не нужно быть пилотом — он получает результат: видео, статус, маршрут, оповещение и отчёт.</p>
+        <p class="eyebrow">01 / КАК ЭТО РАБОТАЕТ</p>
+        <h2 class="reveal">Две минуты. Одно вторжение. Ноль пилотов.</h2>
+        <p class="lead">Симуляция логики системы на реалистичном объекте: патруль, вторжение, эскорт до границы, смена по батарее без потери наблюдения.</p>
+        <figure class="video-block reveal">
+          <video controls preload="none" playsinline poster="/assets/video/perimeter-defense-poster.jpg" aria-label="Симуляция: автономная защита периметра">
+            <source src="/assets/video/perimeter-defense.mp4" type="video/mp4" />
+            Ваш браузер не может воспроизвести это видео. <a href="/assets/video/perimeter-defense.mp4">Скачать MP4.</a>
+          </video>
+          <figcaption class="video-caption"><span><b>ЧАСТЬ 1</b> &nbsp; Автономная защита периметра</span><span>1:52 · без звука · подписи на экране</span></figcaption>
+        </figure>
+        <div class="cta-row">
+          <a class="text-link" href="/ru/scenarios/#people">Часть 2: люди, охрана и роботы →</a>
+          <a class="text-link" href="/ru/scenarios/">Все восемь сценариев по шагам →</a>
+        </div>
       </section>
 
-      <section id="overview" class="section projects">
+      <section id="for" class="section projects">
         <span class="ghost-num" aria-hidden="true">02</span>
         <div class="wrap">
-          <p class="eyebrow">02 / ЧТО МЫ ДЕЛАЕМ</p>
-          <h2 class="reveal">Одна система. Шесть разделов, чтобы присмотреться.</h2>
-          <p class="lead">У каждой части WRONG DATA своя страница — коротко ниже, полная картина в один клик.</p>
-          <div class="hub-grid stagger">
-            <a class="hub-card" href="/ru/solutions/">
+          <p class="eyebrow">02 / ДЛЯ КОГО</p>
+          <h2 class="reveal">Четыре типа объектов. Одна система.</h2>
+          <div class="hub-grid hub-4 stagger">
+            <a class="hub-card" href="/ru/solutions/#security">
               <span class="hub-num">01</span>
-              <h3>Решения</h3>
-              <p>Охрана, сельское хозяйство, промышленный мониторинг и управление умной недвижимостью — одна система, четыре способа применения.</p>
-              <span class="hub-link">Смотреть решения →</span>
+              <h3>Охрана</h3>
+              <p>Склады, закрытые посёлки, логистика и производство — реакция на тревоги, ночной патруль периметра.</p>
+              <span class="hub-link">Как реагирует →</span>
             </a>
-            <a class="hub-card" href="/ru/technology/">
+            <a class="hub-card" href="/ru/solutions/#agriculture">
               <span class="hub-num">02</span>
-              <h3>Технологии</h3>
-              <p>Восемь рабочих компонентов — флот дронов, компьютерное зрение, RTK-навигация, голосовое управление, облачная платформа, дронопорт и интерфейс охранника.</p>
-              <span class="hub-link">Смотреть технологии →</span>
+              <h3>Сельское хозяйство</h3>
+              <p>Виноградники, фермы и пастбища — утренние облёты, проверка посевов, подсчёт скота, периметр фермы.</p>
+              <span class="hub-link">Что проверяет →</span>
             </a>
-            <a class="hub-card" href="/ru/fleet/">
+            <a class="hub-card" href="/ru/solutions/#industrial">
               <span class="hub-num">03</span>
-              <h3>Флот</h3>
-              <p>Независимые группы по три — ведущий дрон координирует двух ведомых — и логика, распределяющая их между несколькими событиями.</p>
-              <span class="hub-link">Смотреть флот →</span>
+              <h3>Промышленность и инфраструктура</h3>
+              <p>Стройплощадки, солнечные станции, промзоны — плановый визуальный мониторинг без выезда.</p>
+              <span class="hub-link">Что мониторит →</span>
             </a>
-            <a class="hub-card" href="/ru/drone-port/">
+            <a class="hub-card" href="/ru/solutions/#smart-property">
               <span class="hub-num">04</span>
-              <h3>Дронопорт</h3>
-              <p>Наземная станция, куда возвращается группа: автоматический запуск, точная посадка и автономная зарядка между миссиями.</p>
-              <span class="hub-link">Смотреть дронопорт →</span>
-            </a>
-            <a class="hub-card" href="/ru/scenarios/">
-              <span class="hub-num">05</span>
-              <h3>Сценарии</h3>
-              <p>Две симуляции, восемь ситуаций — патруль, вторжение, смена по батарее, охранник с привязанными дронами, наземные роботы.</p>
-              <span class="hub-link">Смотреть сценарии →</span>
-            </a>
-            <a class="hub-card" href="/ru/company/">
-              <span class="hub-num">06</span>
-              <h3>Компания</h3>
-              <p>Автономная робототехника из Кишинёва, Молдова — кто мы и как с нами связаться.</p>
-              <span class="hub-link">О компании →</span>
+              <h3>Умная недвижимость</h3>
+              <p>«Покажи периметр». «Отправь дрон к воротам». Дрон становится частью управления недвижимостью.</p>
+              <span class="hub-link">Как управляется →</span>
             </a>
           </div>
         </div>
       </section>
 
-      <section id="сценариях" class="section wrap">
+      <section id="system" class="section wrap">
         <span class="ghost-num" aria-hidden="true">03</span>
-        <p class="eyebrow">03 / КАК ЭТО РАБОТАЕТ</p>
-        <h2 class="reveal">Две симуляции. Восемь ситуаций.</h2>
-        <p class="lead">Как флот патрулирует, отвечает на вторжение, меняет дроны по батарее, следует за охранником и подключает наземных роботов — правила, показанные на объекте.</p>
-        <div class="video-grid stagger">
-          <a class="video-block" href="/ru/scenarios/#perimeter">
-            <img src="/assets/video/perimeter-defense-poster.jpg" width="1280" height="720" loading="lazy" decoding="async" alt="Кадр симуляции: дроны патрулируют периметр ночью" />
-            <span class="video-caption"><span><b>ЧАСТЬ 1</b> &nbsp; Автономная защита периметра</span><span>1:52</span></span>
-          </a>
-          <a class="video-block" href="/ru/scenarios/#people">
-            <img src="/assets/video/people-guards-robots-poster.jpg" width="1280" height="720" loading="lazy" decoding="async" alt="Кадр симуляции: охранник с тремя дронами и наземными роботами" />
-            <span class="video-caption"><span><b>ЧАСТЬ 2</b> &nbsp; Люди, охрана и роботы</span><span>1:43</span></span>
-          </a>
+        <p class="eyebrow">03 / СИСТЕМА</p>
+        <h2 class="reveal">Три дрона, один порт, один набор правил.</h2>
+        <div class="sys-grid stagger">
+          <a class="sys-card" href="/ru/fleet/"><b>Флот</b><span>Ведущий дрон координирует двух ведомых. Патруль, эскорт, смена по батарее — наблюдение не прерывается.</span><em>Флот →</em></a>
+          <a class="sys-card" href="/ru/drone-port/"><b>Дронопорт</b><span>Наземная станция: запуск, точная посадка, зарядка, RTK-база и локальный радиоканал.</span><em>Дронопорт →</em></a>
+          <a class="sys-card" href="/ru/technology/"><b>Технологии</b><span>ArduPilot, RTK/GNSS, компьютерное зрение, облачная платформа — и что происходит при отказах.</span><em>Технологии →</em></a>
         </div>
-        <div class="cta-row"><a class="text-link" href="/ru/scenarios/">Все восемь сценариев по шагам →</a></div>
       </section>
 
-      <section id="outcomes" class="section wrap">
+      <section id="today" class="section projects">
         <span class="ghost-num" aria-hidden="true">04</span>
-        <p class="eyebrow">04 / ЧТО ВЫ ПОЛУЧАЕТЕ</p>
-        <h2 class="reveal">Не видеопоток. Результат, с которым можно работать.</h2>
-        <ul class="outcomes-grid stagger">
-          <li>Кто и где обнаружен</li>
-          <li>Какой сектор был охвачен</li>
-          <li>Какие дроны участвовали</li>
-          <li>Маршрут и время миссии</li>
-          <li>Запись и журнал событий</li>
-          <li>Состояние флота и зарядки</li>
-          <li>Оповещение, когда нужно внимание</li>
-          <li>История миссий и отчётность</li>
-        </ul>
-      </section>
-
-      <section id="difference" class="section projects">
-        <span class="ghost-num" aria-hidden="true">05</span>
         <div class="wrap">
-          <p class="eyebrow">05 / В ЧЁМ ОТЛИЧИЕ</p>
-          <h2 class="reveal">Это не дрон с камерой.</h2>
-          <div class="compare-table reveal">
-            <div class="compare-row compare-head"><span>Обычный дрон</span><span>Система WRONG DATA</span></div>
-            <div class="compare-row"><span>Нужен оператор</span><span>Миссии запускаются по событию, расписанию или голосовой команде</span></div>
-            <div class="compare-row"><span>Один дрон — одна точка обзора</span><span>Группа из трёх покрывает несколько секторов</span></div>
-            <div class="compare-row"><span>Ручной запуск и возврат</span><span>Дронопорт запускает, принимает и заряжает автоматически</span></div>
-            <div class="compare-row"><span>Камера просто записывает</span><span>ИИ помогает понимать события и расставлять приоритеты</span></div>
-            <div class="compare-row"><span>Отдельное устройство</span><span>Часть охраны, умного дома и инфраструктуры объекта</span></div>
+          <p class="eyebrow">04 / ГДЕ МЫ СЕГОДНЯ</p>
+          <h2 class="reveal">Честно о том, что уже летает, а что ещё нет.</h2>
+          <div class="today-grid stagger">
+            <div><span class="stage stage-flight">ИСПЫТАНО В ПОЛЁТЕ</span><p>Автономный полётный стек на собственных 7-дюймовых квадрокоптерах: миссии, телеметрия, возврат и посадка.</p></div>
+            <div><span class="stage stage-bench">В РАЗРАБОТКЕ</span><p>RTK-позиционирование, дронопорт, логика группы и канал дальней связи.</p></div>
+            <div><span class="stage stage-idea">КОНЦЕПЦИЯ</span><p>ИИ-распознавание событий, наручный интерфейс охранника, наземные роботы.</p></div>
           </div>
+          <div class="cta-row"><a class="text-link" href="/ru/company/#status">Полная таблица статусов и план →</a><a class="text-link" href="/ru/company/#team">Кто это делает →</a></div>
         </div>
       </section>
 
-      <section id="company" class="section wrap company">
-        <span class="ghost-num" aria-hidden="true">06</span>
-        <p class="eyebrow">06 / КОМПАНИЯ</p>
-        <h2 class="reveal">Создано для систем, которые действуют.</h2>
-        <p class="lead">WRONG DATA — компания по автономной робототехнике из Кишинёва, Молдова. Мы разрабатываем практичное железо и софт, соединяющие воздушных роботов с интеллектуальной наземной инфраструктурой.</p>
+      <section class="cta-band wrap">
+        <div>
+          <h2>Расскажите о своём объекте.</h2>
+          <p class="lead">Хватит трёх строк: какой объект, какого размера, что система должна делать в первую очередь. Отвечаем в течение двух рабочих дней.</p>
+        </div>
         <div class="cta-row">
-          <a class="button" href="/ru/contact/">Начать разговор <span>→</span></a>
-          <a class="text-link" href="/ru/solutions/#how-we-work">Как мы работаем →</a>
-          <a class="text-link" href="/ru/company/#status">Статус и план →</a>
-          <a class="text-link" href="/ru/company/">Полный профиль компании →</a>
+          <a class="button" href="/ru/contact/">Запросить оценку объекта <span>→</span></a>
+          <a class="text-link" href="mailto:alexandr@wrongdata.md">alexandr@wrongdata.md</a>
         </div>
       </section>
 

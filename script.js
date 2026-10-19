@@ -58,3 +58,10 @@ if(counters.length && !reduceMotion && typeof IntersectionObserver!=='undefined'
   },{threshold:0.5});
   counters.forEach(function(el){cio.observe(el)});
 }
+
+/* Hero video: don't autoplay for reduced-motion or data-saver users */
+const heroVideo=document.querySelector('.hero-bg');
+if(heroVideo){
+  const saveData=navigator.connection && navigator.connection.saveData;
+  if(reduceMotion || saveData){heroVideo.removeAttribute('autoplay');heroVideo.pause();}
+}
