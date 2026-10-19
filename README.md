@@ -55,3 +55,12 @@ In GitHub **Settings → Pages → Custom domain**, enter `wrongdata.md`. GitHub
 - Cyrillic is served from Inter subsets (`assets/fonts/inter-cyrillic*.woff2`); Space Grotesk has no Cyrillic glyphs, so the `@font-face` block maps Cyrillic ranges of the "Space Grotesk" family to Inter — no per-language CSS needed.
 - **Editing text:** edit the English page, then apply the same change in `/ro/` and `/ru/`. The localized pages are plain HTML — there is no build step.
 - **`tools/check_site.py`** validates HTML, JSON-LD, internal links, `<h1>` count and hreflang sets; it runs in GitHub Actions on every push (`.github/workflows/check.yml`). Run it locally with `python3 tools/check_site.py` (needs `pip install html5lib`).
+
+## Stage 4 (Oct 2026): business-card content
+
+- **Solutions** → "How we work" (assessment → pilot → deployment → operation) and "What a site needs".
+- **Technology** → architecture diagram (inline SVG, `.arch-*` classes) and the failsafe table "What happens when something fails".
+- **Company** → founder block, "Flying legally, by design" (airspace, registration, geofence, privacy, safety, insurance), "For partners and investors".
+- **`/faq/`** — 12 questions with `FAQPage` JSON-LD; **`/privacy/`** — privacy notice. Both linked from the footer on every page (header nav unchanged).
+- All of the above exists in EN, RO and RU. New strings were added to the translation dictionaries used to generate `/ro/` and `/ru/`.
+- Facts to keep true as the company changes: timelines in "How we work", the insurance sentence, the pricing model in the FAQ, and the founder paragraph.

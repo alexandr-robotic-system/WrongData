@@ -136,6 +136,72 @@
           <article><span>08</span><h3>Интерфейс охранника и наземные роботы</h3><p>Дроны, привязанные к наручному устройству охранника, голосовые команды и наземные роботы в общей очереди задач — смотрите <a class="text-link" href="/ru/scenarios/">сценарии →</a></p></article>
         </div>
 
+
+        <h2 class="sub reveal" id="architecture">Как части связаны между собой.</h2>
+        <p class="lead">Четыре уровня, у каждого своя задача. Дрон летает, даже если облако недоступно; порт принимает дрон, даже если оператора нет; клиент получает результат, не касаясь ничего из этого.</p>
+        <figure class="arch reveal">
+          <svg viewBox="0 0 960 440" role="img" aria-labelledby="arch-title arch-desc" class="arch-svg">
+            <title id="arch-title">Архитектура системы: клиент, облако, дронопорт, группа дронов</title>
+            <desc id="arch-desc">Клиент отправляет команды и получает отчёты через облачную платформу. Облако обменивается статусом миссий с дронопортом. Порт размещает группу из трёх дронов, обеспечивает зарядку, RTK-поправки и локальный радиоканал. Сигнализация и камеры объекта передают события порту и облаку.</desc>
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3378F4"/></marker>
+            </defs>
+            <!-- Layer 1: client -->
+            <rect x="40" y="30" width="880" height="70" rx="4" fill="#0B0D12" stroke="#20232b"/>
+            <text x="60" y="52" class="arch-tag">01 / КЛИЕНТ</text>
+            <text x="60" y="80" class="arch-txt">Пульт охраны · часы охранника · Telegram / приложение · голос и сценарии</text>
+            <text x="900" y="80" class="arch-txt arch-r">вход: команды · выход: отчёты, оповещения, записи</text>
+            <!-- Layer 2: cloud -->
+            <rect x="40" y="130" width="880" height="70" rx="4" fill="#0B0D12" stroke="#20232b"/>
+            <text x="60" y="152" class="arch-tag">02 / ОБЛАЧНАЯ ПЛАТФОРМА</text>
+            <text x="60" y="180" class="arch-txt">Библиотека миссий · статус флота и зарядки · журнал событий · отчёты · MQTT / AWS IoT Core</text>
+            <!-- Layer 3: port -->
+            <rect x="40" y="230" width="560" height="90" rx="4" fill="#0B0D12" stroke="#3378F4"/>
+            <text x="60" y="252" class="arch-tag">03 / МОДУЛЬНЫЙ ДРОНОПОРТ</text>
+            <text x="60" y="280" class="arch-txt">Площадки · крыша · зарядка · RTK-база (ZED-F9P) · локальный радиоканал</text>
+            <text x="60" y="302" class="arch-txt arch-m">Планировщик миссий и супервизор защит работают здесь — полёты не зависят от интернета.</text>
+            <!-- Site systems -->
+            <rect x="640" y="230" width="280" height="90" rx="4" fill="#0B0D12" stroke="#20232b"/>
+            <text x="660" y="252" class="arch-tag">СИСТЕМЫ ОБЪЕКТА</text>
+            <text x="660" y="280" class="arch-txt">Сигнализация · камеры · ворота</text>
+            <text x="660" y="302" class="arch-txt arch-m">вход: события → выход: миссии</text>
+            <!-- Layer 4: drones -->
+            <rect x="40" y="350" width="170" height="60" rx="4" fill="#0038CC" stroke="#3378F4"/>
+            <text x="125" y="374" class="arch-tag arch-c" style="fill:#F5F5F5">ВЕДУЩИЙ ДРОН</text>
+            <text x="125" y="396" class="arch-txt arch-c arch-m">RPi 5 · ArduPilot · RTK</text>
+            <rect x="235" y="350" width="170" height="60" rx="4" fill="#0B0D12" stroke="#D9D9DB"/>
+            <text x="320" y="374" class="arch-tag arch-c" style="fill:#D9D9DB">ВЕДОМЫЙ</text>
+            <text x="320" y="396" class="arch-txt arch-c arch-m">ArduPilot · RTK</text>
+            <rect x="430" y="350" width="170" height="60" rx="4" fill="#0B0D12" stroke="#D9D9DB"/>
+            <text x="515" y="374" class="arch-tag arch-c" style="fill:#D9D9DB">ВЕДОМЫЙ</text>
+            <text x="515" y="396" class="arch-txt arch-c arch-m">ArduPilot · RTK</text>
+            <text x="640" y="385" class="arch-txt arch-m">MAVLink по локальному каналу · RTK-поправки · видео</text>
+            <!-- connectors -->
+            <line x1="480" y1="100" x2="480" y2="130" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="320" y1="200" x2="320" y2="230" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="780" y1="200" x2="780" y2="230" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)"/>
+            <line x1="600" y1="275" x2="640" y2="275" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="125" y1="320" x2="125" y2="350" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="320" y1="320" x2="320" y2="350" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="515" y1="320" x2="515" y2="350" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="210" y1="380" x2="235" y2="380" stroke="#D9D9DB" stroke-width="1" stroke-dasharray="3 3"/>
+            <line x1="405" y1="380" x2="430" y2="380" stroke="#D9D9DB" stroke-width="1" stroke-dasharray="3 3"/>
+          </svg>
+          <figcaption class="muted">Синие стрелки — команды и статусы. Ведущий дрон координирует группу по локальному каналу; порт держит группу в полёте, заряженной и позиционированной.</figcaption>
+        </figure>
+
+        <h2 class="sub reveal" id="safety">Что происходит при отказах.</h2>
+        <p class="lead">Автономность полезна, только если при сбоях всё происходит скучно и предсказуемо. У каждого дрона одинаковая конфигурация защит; каждое правило ниже — настройка полётного контроллера, а не обещание.</p>
+        <div class="compare-table reveal">
+          <div class="compare-row compare-head"><span>Отказ</span><span>Поведение</span></div>
+          <div class="compare-row"><span>Потеря радиосвязи</span><span>Дрон завершает текущую точку маршрута, затем возвращается к порту по заранее облётанному маршруту и садится. Для возврата домой связь не нужна.</span></div>
+          <div class="compare-row"><span>Низкий заряд</span><span>Предупредительный уровень запускает запрос замены в группе; критический — безусловный возврат на точку старта.</span></div>
+          <div class="compare-row"><span>Ухудшение GNSS / RTK</span><span>Точная посадка ждёт устойчивого решения; если его нет, дрон садится по визуальному маркеру площадки (AprilTag) и сообщает о посадке в ухудшенном режиме.</span></div>
+          <div class="compare-row"><span>Нарушение геозоны</span><span>Жёсткая геозона вокруг объекта останавливает дрон на границе и возвращает его — вылететь за разрешённую область невозможно.</span></div>
+          <div class="compare-row"><span>Порт недоступен</span><span>У каждого объекта есть заданная запасная площадка; дрон садится там, а система оповещает контактного человека на объекте.</span></div>
+          <div class="compare-row"><span>Погода вне пределов</span><span>Пределы по ветру, дождю и температуре проверяются перед каждым запуском; плановые патрули пропускаются и записываются в журнал, а не выполняются через силу.</span></div>
+        </div>
+
         <nav class="pager" aria-label="Навигация по страницам">
           <a class="prev" href="/ru/solutions/"><small>← НАЗАД</small><span class="pager-title">Решения</span></a>
           <a class="next" href="/ru/fleet/"><small>ДАЛЕЕ →</small><span class="pager-title">Флот</span></a>
@@ -153,7 +219,7 @@
           <p class="muted">Автономная робототехника.<br />Кишинёв, Молдова.</p>
         </div>
         <nav class="footer-nav" aria-label="Подвал">
-          <a href="/ru/solutions/">Решения</a><a href="/ru/technology/" class="active" aria-current="page">Технологии</a><a href="/ru/fleet/">Флот</a><a href="/ru/drone-port/">Дронопорт</a><a href="/ru/scenarios/">Сценарии</a><a href="/ru/company/">Компания</a><a href="/ru/contact/">Контакты</a>
+          <a href="/ru/solutions/">Решения</a><a href="/ru/technology/" class="active" aria-current="page">Технологии</a><a href="/ru/fleet/">Флот</a><a href="/ru/drone-port/">Дронопорт</a><a href="/ru/scenarios/">Сценарии</a><a href="/ru/company/">Компания</a><a href="/ru/contact/">Контакты</a><a href="/ru/faq/">FAQ</a><a href="/ru/privacy/">Конфиденциальность</a>
         </nav>
         <div class="footer-contact">
           <a class="text-link" href="mailto:alexandr@wrongdata.md">alexandr@wrongdata.md</a>

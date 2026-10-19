@@ -136,6 +136,72 @@
           <article><span>08</span><h3>Interfața paznicului și roboți tereștri</h3><p>Drone atașate dispozitivului de la încheietura paznicului, comenzi vocale și roboți tereștri în aceeași coadă de sarcini — vezi <a class="text-link" href="/ro/scenarios/">scenariile →</a></p></article>
         </div>
 
+
+        <h2 class="sub reveal" id="architecture">Cum se leagă componentele.</h2>
+        <p class="lead">Patru straturi, fiecare cu rolul său. Drona zboară chiar dacă cloud-ul e căzut; portul recuperează drona chiar dacă operatorul lipsește; clientul primește rezultatul fără să atingă nimic din toate acestea.</p>
+        <figure class="arch reveal">
+          <svg viewBox="0 0 960 440" role="img" aria-labelledby="arch-title arch-desc" class="arch-svg">
+            <title id="arch-title">Arhitectura sistemului: client, cloud, Drone Port, grup de drone</title>
+            <desc id="arch-desc">Clientul trimite comenzi și primește rapoarte prin platforma cloud. Platforma cloud schimbă starea misiunilor cu Drone Port-ul. Portul găzduiește un grup de trei drone, asigură încărcarea, corecțiile RTK și legătura radio locală. Alarmele și camerele de pe obiectiv transmit evenimente către port și cloud.</desc>
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3378F4"/></marker>
+            </defs>
+            <!-- Layer 1: client -->
+            <rect x="40" y="30" width="880" height="70" rx="4" fill="#0B0D12" stroke="#20232b"/>
+            <text x="60" y="52" class="arch-tag">01 / CLIENT</text>
+            <text x="60" y="80" class="arch-txt">Dispecerat · ceasul paznicului · Telegram / aplicație · voce și scenarii</text>
+            <text x="900" y="80" class="arch-txt arch-r">intră: comenzi · ies: rapoarte, alerte, înregistrări</text>
+            <!-- Layer 2: cloud -->
+            <rect x="40" y="130" width="880" height="70" rx="4" fill="#0B0D12" stroke="#20232b"/>
+            <text x="60" y="152" class="arch-tag">02 / PLATFORMĂ CLOUD</text>
+            <text x="60" y="180" class="arch-txt">Bibliotecă de misiuni · starea flotei și a încărcării · jurnal de evenimente · raportare · MQTT / AWS IoT Core</text>
+            <!-- Layer 3: port -->
+            <rect x="40" y="230" width="560" height="90" rx="4" fill="#0B0D12" stroke="#3378F4"/>
+            <text x="60" y="252" class="arch-tag">03 / DRONE PORT MODULAR</text>
+            <text x="60" y="280" class="arch-txt">Platforme · acoperiș · încărcare · bază RTK (ZED-F9P) · legătură radio locală</text>
+            <text x="60" y="302" class="arch-txt arch-m">Planificatorul de misiuni și supervizorul de protecții rulează aici — zborurile nu depind de internet.</text>
+            <!-- Site systems -->
+            <rect x="640" y="230" width="280" height="90" rx="4" fill="#0B0D12" stroke="#20232b"/>
+            <text x="660" y="252" class="arch-tag">SISTEMELE OBIECTIVULUI</text>
+            <text x="660" y="280" class="arch-txt">Alarme · camere · porți</text>
+            <text x="660" y="302" class="arch-txt arch-m">intră: evenimente → ies: misiuni</text>
+            <!-- Layer 4: drones -->
+            <rect x="40" y="350" width="170" height="60" rx="4" fill="#0038CC" stroke="#3378F4"/>
+            <text x="125" y="374" class="arch-tag arch-c" style="fill:#F5F5F5">DRONĂ LIDER</text>
+            <text x="125" y="396" class="arch-txt arch-c arch-m">RPi 5 · ArduPilot · RTK</text>
+            <rect x="235" y="350" width="170" height="60" rx="4" fill="#0B0D12" stroke="#D9D9DB"/>
+            <text x="320" y="374" class="arch-tag arch-c" style="fill:#D9D9DB">ÎNSOȚITOR</text>
+            <text x="320" y="396" class="arch-txt arch-c arch-m">ArduPilot · RTK</text>
+            <rect x="430" y="350" width="170" height="60" rx="4" fill="#0B0D12" stroke="#D9D9DB"/>
+            <text x="515" y="374" class="arch-tag arch-c" style="fill:#D9D9DB">ÎNSOȚITOR</text>
+            <text x="515" y="396" class="arch-txt arch-c arch-m">ArduPilot · RTK</text>
+            <text x="640" y="385" class="arch-txt arch-m">MAVLink pe legătura locală · corecții RTK · video</text>
+            <!-- connectors -->
+            <line x1="480" y1="100" x2="480" y2="130" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="320" y1="200" x2="320" y2="230" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="780" y1="200" x2="780" y2="230" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)"/>
+            <line x1="600" y1="275" x2="640" y2="275" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="125" y1="320" x2="125" y2="350" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="320" y1="320" x2="320" y2="350" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="515" y1="320" x2="515" y2="350" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="210" y1="380" x2="235" y2="380" stroke="#D9D9DB" stroke-width="1" stroke-dasharray="3 3"/>
+            <line x1="405" y1="380" x2="430" y2="380" stroke="#D9D9DB" stroke-width="1" stroke-dasharray="3 3"/>
+          </svg>
+          <figcaption class="muted">Săgețile albastre poartă comenzi și stări. Drona lider coordonează grupul pe legătura locală; portul menține grupul în zbor, încărcat și poziționat.</figcaption>
+        </figure>
+
+        <h2 class="sub reveal" id="safety">Ce se întâmplă când ceva cedează.</h2>
+        <p class="lead">Autonomia este utilă doar dacă, atunci când ceva merge prost, totul e plictisitor de previzibil. Fiecare dronă poartă aceeași configurație de protecții; fiecare regulă de mai jos este o setare a controlerului de zbor, nu o promisiune.</p>
+        <div class="compare-table reveal">
+          <div class="compare-row compare-head"><span>Defecțiune</span><span>Comportament</span></div>
+          <div class="compare-row"><span>Legătură radio pierdută</span><span>Drona termină punctul curent de traseu, apoi se întoarce la port pe un traseu zburat în prealabil și aterizează. Nu e nevoie de legătură pentru a veni acasă.</span></div>
+          <div class="compare-row"><span>Baterie scăzută</span><span>Nivelul de avertizare declanșează o cerere de predare către grup; nivelul critic declanșează o întoarcere necondiționată la punctul de lansare.</span></div>
+          <div class="compare-row"><span>GNSS / RTK degradat</span><span>Aterizarea de precizie așteaptă o soluție stabilă; dacă nu vine, drona aterizează pe marcajul vizual al platformei (AprilTag) și raportează o aterizare degradată.</span></div>
+          <div class="compare-row"><span>Geofence depășit</span><span>O limită strictă în jurul obiectivului oprește drona la graniță și o aduce înapoi — nu poate fi zburată în afara zonei permise.</span></div>
+          <div class="compare-row"><span>Port indisponibil</span><span>Fiecare obiectiv are un loc alternativ de aterizare definit; drona aterizează acolo, iar sistemul alertează persoana de contact de pe obiectiv.</span></div>
+          <div class="compare-row"><span>Vreme în afara limitelor</span><span>Limitele de vânt, ploaie și temperatură sunt verificate înainte de fiecare lansare; patrulele programate sunt sărite și înregistrate, nu forțate.</span></div>
+        </div>
+
         <nav class="pager" aria-label="Navigare între pagini">
           <a class="prev" href="/ro/solutions/"><small>← ÎNAPOI</small><span class="pager-title">Soluții</span></a>
           <a class="next" href="/ro/fleet/"><small>URMĂTOR →</small><span class="pager-title">Flotă</span></a>
@@ -153,7 +219,7 @@
           <p class="muted">Robotică autonomă.<br />Chișinău, Moldova.</p>
         </div>
         <nav class="footer-nav" aria-label="Subsol">
-          <a href="/ro/solutions/">Soluții</a><a href="/ro/technology/" class="active" aria-current="page">Tehnologie</a><a href="/ro/fleet/">Flotă</a><a href="/ro/drone-port/">Drone Port</a><a href="/ro/scenarios/">Scenarii</a><a href="/ro/company/">Companie</a><a href="/ro/contact/">Contact</a>
+          <a href="/ro/solutions/">Soluții</a><a href="/ro/technology/" class="active" aria-current="page">Tehnologie</a><a href="/ro/fleet/">Flotă</a><a href="/ro/drone-port/">Drone Port</a><a href="/ro/scenarios/">Scenarii</a><a href="/ro/company/">Companie</a><a href="/ro/contact/">Contact</a><a href="/ro/faq/">Întrebări frecvente</a><a href="/ro/privacy/">Confidențialitate</a>
         </nav>
         <div class="footer-contact">
           <a class="text-link" href="mailto:alexandr@wrongdata.md">alexandr@wrongdata.md</a>

@@ -240,4 +240,64 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://wrongdata.md/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wrongdata.md/faq/" />
+    <xhtml:link rel="alternate" hreflang="ro" href="https://wrongdata.md/ro/faq/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wrongdata.md/ru/faq/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wrongdata.md/faq/" />
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wrongdata.md/ro/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wrongdata.md/faq/" />
+    <xhtml:link rel="alternate" hreflang="ro" href="https://wrongdata.md/ro/faq/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wrongdata.md/ru/faq/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wrongdata.md/faq/" />
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wrongdata.md/ru/faq/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wrongdata.md/faq/" />
+    <xhtml:link rel="alternate" hreflang="ro" href="https://wrongdata.md/ro/faq/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wrongdata.md/ru/faq/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wrongdata.md/faq/" />
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://wrongdata.md/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wrongdata.md/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ro" href="https://wrongdata.md/ro/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wrongdata.md/ru/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wrongdata.md/privacy/" />
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://wrongdata.md/ro/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wrongdata.md/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ro" href="https://wrongdata.md/ro/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wrongdata.md/ru/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wrongdata.md/privacy/" />
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://wrongdata.md/ru/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://wrongdata.md/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ro" href="https://wrongdata.md/ro/privacy/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://wrongdata.md/ru/privacy/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://wrongdata.md/privacy/" />
+    <lastmod>2026-10-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

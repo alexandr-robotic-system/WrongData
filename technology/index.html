@@ -135,6 +135,72 @@
           <article><span>08</span><h3>Guard interface &amp; ground robots</h3><p>Drones bound to a guard's wrist device, voice commands, and ground robots on the same task queue — see the <a class="text-link" href="/scenarios/">scenarios →</a></p></article>
         </div>
 
+
+        <h2 class="sub reveal" id="architecture">How the parts connect.</h2>
+        <p class="lead">Four layers, each with its own job. The drone flies even if the cloud is down; the port recovers the drone even if the operator is away; the client gets the result without touching any of it.</p>
+        <figure class="arch reveal">
+          <svg viewBox="0 0 960 440" role="img" aria-labelledby="arch-title arch-desc" class="arch-svg">
+            <title id="arch-title">System architecture: client, cloud, Drone Port, drone group</title>
+            <desc id="arch-desc">The client sends commands and receives reports through the cloud platform. The cloud platform exchanges mission status with the Drone Port. The port hosts a group of three drones, provides charging, RTK corrections and the local radio link. Alarms and cameras on the site feed events to the port and the cloud.</desc>
+            <defs>
+              <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3378F4"/></marker>
+            </defs>
+            <!-- Layer 1: client -->
+            <rect x="40" y="30" width="880" height="70" rx="4" fill="#0B0D12" stroke="#20232b"/>
+            <text x="60" y="52" class="arch-tag">01 / CLIENT</text>
+            <text x="60" y="80" class="arch-txt">Security desk · guard's watch · Telegram / app · voice &amp; scenarios</text>
+            <text x="900" y="80" class="arch-txt arch-r">commands in · reports, alerts, footage out</text>
+            <!-- Layer 2: cloud -->
+            <rect x="40" y="130" width="880" height="70" rx="4" fill="#0B0D12" stroke="#20232b"/>
+            <text x="60" y="152" class="arch-tag">02 / CLOUD PLATFORM</text>
+            <text x="60" y="180" class="arch-txt">Mission library · fleet &amp; charge status · event log · reporting · MQTT / AWS IoT Core</text>
+            <!-- Layer 3: port -->
+            <rect x="40" y="230" width="560" height="90" rx="4" fill="#0B0D12" stroke="#3378F4"/>
+            <text x="60" y="252" class="arch-tag">03 / MODULAR DRONE PORT</text>
+            <text x="60" y="280" class="arch-txt">Pads · roof · charging · RTK base (ZED-F9P) · local radio link</text>
+            <text x="60" y="302" class="arch-txt arch-m">Mission scheduler and failsafe supervisor run here — flights don't depend on the internet.</text>
+            <!-- Site systems -->
+            <rect x="640" y="230" width="280" height="90" rx="4" fill="#0B0D12" stroke="#20232b"/>
+            <text x="660" y="252" class="arch-tag">SITE SYSTEMS</text>
+            <text x="660" y="280" class="arch-txt">Alarms · cameras · gates</text>
+            <text x="660" y="302" class="arch-txt arch-m">events in → missions out</text>
+            <!-- Layer 4: drones -->
+            <rect x="40" y="350" width="170" height="60" rx="4" fill="#0038CC" stroke="#3378F4"/>
+            <text x="125" y="374" class="arch-tag arch-c" style="fill:#F5F5F5">LEAD DRONE</text>
+            <text x="125" y="396" class="arch-txt arch-c arch-m">RPi 5 · ArduPilot · RTK</text>
+            <rect x="235" y="350" width="170" height="60" rx="4" fill="#0B0D12" stroke="#D9D9DB"/>
+            <text x="320" y="374" class="arch-tag arch-c" style="fill:#D9D9DB">FOLLOWER</text>
+            <text x="320" y="396" class="arch-txt arch-c arch-m">ArduPilot · RTK</text>
+            <rect x="430" y="350" width="170" height="60" rx="4" fill="#0B0D12" stroke="#D9D9DB"/>
+            <text x="515" y="374" class="arch-tag arch-c" style="fill:#D9D9DB">FOLLOWER</text>
+            <text x="515" y="396" class="arch-txt arch-c arch-m">ArduPilot · RTK</text>
+            <text x="640" y="385" class="arch-txt arch-m">MAVLink over the local link · RTK corrections · video</text>
+            <!-- connectors -->
+            <line x1="480" y1="100" x2="480" y2="130" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="320" y1="200" x2="320" y2="230" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="780" y1="200" x2="780" y2="230" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)"/>
+            <line x1="600" y1="275" x2="640" y2="275" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="125" y1="320" x2="125" y2="350" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="320" y1="320" x2="320" y2="350" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="515" y1="320" x2="515" y2="350" stroke="#3378F4" stroke-width="1.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+            <line x1="210" y1="380" x2="235" y2="380" stroke="#D9D9DB" stroke-width="1" stroke-dasharray="3 3"/>
+            <line x1="405" y1="380" x2="430" y2="380" stroke="#D9D9DB" stroke-width="1" stroke-dasharray="3 3"/>
+          </svg>
+          <figcaption class="muted">Blue arrows carry commands and status. The lead drone coordinates the group over the local link; the port keeps the group flying, charged and positioned.</figcaption>
+        </figure>
+
+        <h2 class="sub reveal" id="safety">What happens when something fails.</h2>
+        <p class="lead">Autonomy is only useful if it is boring when things go wrong. Every drone carries the same failsafe configuration; every rule below is a flight-controller setting, not a promise.</p>
+        <div class="compare-table reveal">
+          <div class="compare-row compare-head"><span>Failure</span><span>Behaviour</span></div>
+          <div class="compare-row"><span>Radio link lost</span><span>The drone finishes the current waypoint, then returns to the port along a pre-flown route and lands. No link is needed to come home.</span></div>
+          <div class="compare-row"><span>Battery low</span><span>Warning level triggers a handover request to the group; critical level triggers an unconditional return-to-launch.</span></div>
+          <div class="compare-row"><span>GNSS / RTK degraded</span><span>Precision landing waits for a solid fix; if none comes, the drone lands on the pad's visual marker (AprilTag) and reports a degraded landing.</span></div>
+          <div class="compare-row"><span>Geofence breached</span><span>A hard fence around the site stops the drone at the boundary and brings it back — it cannot be flown outside the permitted area.</span></div>
+          <div class="compare-row"><span>Port unavailable</span><span>Each site has a defined alternate landing spot; the drone lands there and the system alerts the on-site contact.</span></div>
+          <div class="compare-row"><span>Weather out of limits</span><span>Wind, rain and temperature limits are checked before every launch; scheduled patrols are skipped and logged, not forced.</span></div>
+        </div>
+
         <nav class="pager" aria-label="Page navigation">
           <a class="prev" href="/solutions/"><small>← BACK</small><span class="pager-title">Solutions</span></a>
           <a class="next" href="/fleet/"><small>NEXT →</small><span class="pager-title">Fleet</span></a>
@@ -152,7 +218,7 @@
           <p class="muted">Autonomous robotics.<br />Chișinău, Moldova.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer">
-          <a href="/solutions/">Solutions</a><a href="/technology/" class="active" aria-current="page">Technology</a><a href="/fleet/">Fleet</a><a href="/drone-port/">Drone Port</a><a href="/scenarios/">Scenarios</a><a href="/company/">Company</a><a href="/contact/">Contact</a>
+          <a href="/solutions/">Solutions</a><a href="/technology/" class="active" aria-current="page">Technology</a><a href="/fleet/">Fleet</a><a href="/drone-port/">Drone Port</a><a href="/scenarios/">Scenarios</a><a href="/company/">Company</a><a href="/contact/">Contact</a><a href="/faq/">FAQ</a><a href="/privacy/">Privacy</a>
         </nav>
         <div class="footer-contact">
           <a class="text-link" href="mailto:alexandr@wrongdata.md">alexandr@wrongdata.md</a>

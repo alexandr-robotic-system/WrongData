@@ -226,7 +226,7 @@ p{font-family:Inter,Arial,sans-serif}
 .tech-grid article{padding:24px 30px 24px 0;background:none;border:0;border-bottom:1px solid var(--line);transform:none}
 .tech-grid article:nth-child(odd){padding-right:30px;border-right:1px solid var(--line)}
 .tech-grid article:nth-child(even){padding-left:30px}
-.tech-grid article:last-child{grid-column:1/-1;border-right:0}
+.tech-grid article:last-child:nth-child(odd){grid-column:1/-1;border-right:0}
 .tech-grid article:hover{border-color:var(--line);background:none;transform:none}
 .tech-grid article:hover h3{color:var(--blue)}
 .tech-grid h3{transition:color .2s ease}
@@ -423,3 +423,67 @@ p{font-family:Inter,Arial,sans-serif}
 .lang a:hover{color:var(--white)}
 .lang a.active{color:var(--blue)}
 @media(max-width:680px){.lang{margin-right:10px}}
+
+/* ---- Stage 4 additions ---- */
+
+/* How we work — numbered steps */
+.steps{margin:32px 0 0;padding:0;list-style:none;counter-reset:st;border-top:1px solid var(--line)}
+.steps li{counter-increment:st;display:grid;grid-template-columns:56px 220px 1fr 110px;gap:20px;align-items:start;padding:24px 0;border-bottom:1px solid var(--line)}
+.steps li::before{content:"0" counter(st);font:600 22px 'Space Grotesk';color:var(--blue);letter-spacing:-.02em}
+.steps b{font:600 17px 'Space Grotesk';color:var(--white)}
+.steps span{font-size:14px;line-height:1.6;color:var(--muted)}
+.steps em{font:600 11px 'Space Grotesk';letter-spacing:.1em;color:var(--silver);text-transform:uppercase;justify-self:end;padding-top:5px}
+
+/* Requirement / fact grids */
+.req-grid{margin:32px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.req-grid li{background:var(--ink);padding:20px 22px;font-size:14px;line-height:1.6;color:var(--muted)}
+.req-grid li b{display:block;font:600 15px 'Space Grotesk';color:var(--white);margin-bottom:8px}
+
+.req-2{grid-template-columns:1fr 1fr}
+
+/* Founder */
+.founder{display:grid;grid-template-columns:120px 1fr;gap:32px;margin-top:32px;padding:32px;background:var(--ink);border:1px solid var(--card-line)}
+.founder-mark{width:120px;height:120px;display:grid;place-items:center;font:600 56px 'Space Grotesk';color:var(--white);background:linear-gradient(160deg,var(--blue-deep),#0b1a44);border:1px solid var(--blue)}
+.founder h3{margin:4px 0 14px;font-size:20px}
+.founder p{font-size:15px;line-height:1.65;color:#c5c6ca;margin:0 0 14px}
+.founder .cta-row{margin-top:10px;gap:22px}
+
+/* Architecture diagram */
+.arch{margin:36px 0 0;padding:0}
+.arch-svg{display:block;width:100%;height:auto;background:var(--black);border:1px solid var(--card-line)}
+.arch-tag{font:600 11px 'Space Grotesk';letter-spacing:.12em;fill:var(--blue)}
+.arch-txt{font:500 13px Inter,Arial,sans-serif;fill:var(--white)}
+.arch-m{fill:var(--muted);font-size:12px}
+.arch-r{text-anchor:end}
+.arch-c{text-anchor:middle}
+.arch figcaption{font-size:13px;line-height:1.5;margin-top:12px}
+
+/* FAQ */
+.faq{margin-top:8px;border-top:1px solid var(--line);max-width:860px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;padding:22px 0;font:600 17px 'Space Grotesk';color:var(--white);transition:color .15s ease}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';flex:0 0 auto;font:400 24px 'Space Grotesk';color:var(--blue);transition:transform .2s ease}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item summary:hover{color:var(--blue)}
+.faq-item p{margin:0 0 24px;max-width:720px;font-size:15px;line-height:1.65;color:#c5c6ca}
+
+/* Privacy / prose */
+.prose{max-width:760px}
+.prose h2{font-size:22px;margin:40px 0 12px;letter-spacing:-.01em}
+.prose h2:first-child{margin-top:0}
+.prose p{font-size:15px;line-height:1.7;color:#c5c6ca;margin:0 0 14px}
+#privacy.section,#faq.section{padding-top:40px}
+
+@media(max-width:900px){
+  .steps li{grid-template-columns:48px 1fr;gap:8px 16px}
+  .steps span{grid-column:2}
+  .steps em{grid-column:2;justify-self:start}
+  .req-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:680px){
+  .req-grid{grid-template-columns:1fr}
+  .founder{grid-template-columns:1fr;padding:24px}
+  .founder-mark{width:72px;height:72px;font-size:34px}
+  .faq-item summary{font-size:16px;padding:18px 0}
+}
