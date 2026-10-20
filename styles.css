@@ -540,3 +540,9 @@ p{font-family:Inter,Arial,sans-serif}
   .cta-band-sub{padding:28px 22px;margin-top:56px}
 }
 @media(prefers-reduced-motion:reduce){.hero-bg{display:none}.hero-video{background:#000 url('/assets/video/hero-poster.jpg') center/cover no-repeat}}
+
+/* In-page jump bar */
+.jump{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.jump a{font:600 12px 'Space Grotesk',Arial,sans-serif;letter-spacing:.06em;color:#d7d8da;text-decoration:none;padding:9px 14px;border:1px solid var(--card-line);transition:border-color .15s ease,color .15s ease}
+.jump a:hover{border-color:var(--blue);color:var(--blue)}
+.section h2.sub[id]{scroll-margin-top:24px}

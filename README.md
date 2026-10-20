@@ -71,3 +71,8 @@ In GitHub **Settings → Pages → Custom domain**, enter `wrongdata.md`. GitHub
 - The "Conventional drone vs WRONG DATA" table moved from home to Technology (`#difference`). Solutions articles have anchors (`#security`, `#agriculture`, `#industrial`, `#smart-property`).
 - Every subpage ends with a "Tell us about your site" band before the pager.
 - Header navigation is now four items (Solutions · Scenarios · Company · Contact-as-button); the full list of pages lives in the footer.
+
+## Share images and Company jump bar (Oct 2026)
+
+- `assets/og/<lang>-<page>.jpg` — 1200×630 share previews for every page in EN/RO/RU, rendered from each page's own `<h1>` and eyebrow over the hero frame. `og:image` and `twitter:image` point to them. When a headline changes, regenerate them (the generator reads the HTML, so run it **after** the RO/RU pages are regenerated).
+- Company page has an "On this page" jump bar (Status · Team · Regulation · Partners · Roadmap).
