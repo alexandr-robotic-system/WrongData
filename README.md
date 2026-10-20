@@ -70,3 +70,4 @@ In GitHub **Settings → Pages → Custom domain**, enter `wrongdata.md`. GitHub
 - Home is now a short landing: hero with a muted 9-second loop from the simulation (`assets/video/hero-loop.mp4`, poster fallback, no autoplay for reduced-motion / data-saver), one headline, two CTAs; Detect · Respond · Report strip; one playable demo video; four "who it's for" tiles; Fleet / Drone Port / Technology cards; honest status strip; closing CTA.
 - The "Conventional drone vs WRONG DATA" table moved from home to Technology (`#difference`). Solutions articles have anchors (`#security`, `#agriculture`, `#industrial`, `#smart-property`).
 - Every subpage ends with a "Tell us about your site" band before the pager.
+- Header navigation is now four items (Solutions · Scenarios · Company · Contact-as-button); the full list of pages lives in the footer.

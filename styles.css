@@ -33,7 +33,11 @@ h1,h2,h3,.brand,.eyebrow,.button,nav a,.tag,footer,.ui-label{font-family:'Space 
 .nav{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:relative;z-index:2}
 .brand{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-decoration:none;color:var(--white)}
 .brand-mark{display:block;border-radius:4px}
-.nav nav{display:flex;gap:26px}
+.nav nav{display:flex;gap:28px;align-items:center}
+.nav nav a:last-child{border:1px solid var(--card-line);padding:9px 14px;color:var(--white)}
+.nav nav a:last-child::after{display:none}
+.nav nav a:last-child:hover{border-color:var(--blue);color:var(--blue)}
+.nav nav a:last-child.active{border-color:var(--blue)}
 .nav nav a,.text-link{font-size:12px;color:#d7d8da;text-decoration:none;transition:color .15s ease}
 .nav nav a{position:relative}
 .nav nav a::after{content:'';position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:var(--blue);transition:right .2s ease}
@@ -305,6 +309,8 @@ p{font-family:Inter,Arial,sans-serif}
   .menu{display:block}
   .nav nav{display:none;position:absolute;right:0;top:75px;flex-direction:column;background:#08090d;border:1px solid #222;padding:18px;gap:16px;min-width:200px}
   .nav nav a{padding:6px 0}
+  .nav nav{align-items:stretch}
+  .nav nav a:last-child{text-align:center;padding:10px 14px}
   .nav.is-open nav{display:flex}
   .hero{min-height:0;padding-top:48px;padding-bottom:64px}
   .logo{margin-top:24px}
